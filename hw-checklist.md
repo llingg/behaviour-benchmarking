@@ -67,7 +67,7 @@ So called Dagu Motor 48:1 (Yellow Motors)
 
 Blue Motors with embedded hall effect sensors
 <p align="center">
-     <img src="media/dc-motor-db.png" width="20%" height="20%" />
+     <img src="media/dc_motor_db.png" width="20%" height="20%" />
 </p>
 
 
@@ -121,10 +121,10 @@ The so called standard white battery
 
 Duckiebattery v. 1.0:
 <p align="center">
-     <img src="media/duckiebattery-front.jpg" width="20%" height="20%" />
+     <img src="media/duckiebattery_front.jpg" width="20%" height="20%" />
 </p>
 <p align="center">
-     <img src="media/duckiebattery-ports.jpg" width="20%" height="20%" />
+     <img src="media/duckiebattery_ports.jpg" width="20%" height="20%" />
 </p>
 
 #Memory:

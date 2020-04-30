@@ -116,7 +116,7 @@ Caster:
 RAVPOWER RP-PB07:
 The so called standard white battery
 <p align="center">
-     <img src="media/ravpower.jpg" width="50%" height="50%" />
+     <img src="media/ravpower.jpg" width="20%" height="20%" />
 </p>
 
 Duckiebattery v. 1.0:

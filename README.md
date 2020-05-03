@@ -33,7 +33,25 @@ After follow the instructions found [here](https://docs.duckietown.org/daffy/opm
 Then set up the [offline localization](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_demo.html).
 
 
+Afterwards make sure to load the correct images of dt-car-interface, dt-duckiebot-interface and dt-core onto your autobot by running the following commands:
+TODO
+Then start the dt-car-interface and the dt-duckiebot-interface by running the following commands:
+TODO
+
+Then run your version of dt-core. (To have a refference, just clone this repository: , then build it by running: and run it with:)
+
+Place your DB within the loop, start the diagnostic_toolbox by running the command: TODO
+
+Then start a docker container by running: dts cli
+then start recording a bag by running:
+
 You can use the following command to record bag files
 
     $ rosbag record -a -o BAG_NAME.bag
+
+Start lane_following by pressing a.
+As soon as the bag recording has finished stop lane following and copy the recorded bag onto your local computer (out of the docker container)
+Then visit the webside:
+TODO
+and download the .json file of your experiment
 

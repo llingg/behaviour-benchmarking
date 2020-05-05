@@ -1,0 +1,8 @@
+#!/home/linuslingg/duckietown-world/duckietown-world-venv/bin/python
+# -*- coding: utf-8 -*-
+import re
+import sys
+from comptests.comptest_to_junit import comptest_to_junit_main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(comptest_to_junit_main())

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="480" version="1.1" width="480" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style type="text/css">
+<![CDATA[
+        .sign-paper {
+            display: none;
+        }
+        g.axes, .LaneSegment {
+            display: none;
+        }
+         
+    ]]>    </style>
+  </defs>
+  <g id="base" transform="translate(192.0, 288.0) scale(96.0) scale(+1,-1)">
+    <g id="grid">
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-2" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-2" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-2" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-2" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-2" y="2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="2"/>
+    </g>
+    <g class="axes">
+      <line stroke="red" stroke-width="0.03" x1="0" x2="0.5" y1="0" y2="0"/>
+      <line stroke="green" stroke-width="0.03" x1="0" x2="0" y1="0" y2="0.5"/>
+    </g>
+    <g id="inside">
+      <g id="tofill">
+        <g/>
+        <g class="static">
+          <g class="lane">
+            <polygon fill="#709457" fill-opacity="0.5" points="-0.5,-0.4079999988079071 -0.3888888888888889,-0.4079999988079071 -0.2777777777777778,-0.4079999988079071 -0.16666666666666669,-0.4079999988079071 -0.05555555555555558,-0.4079999988079071 0.05555555555555558,-0.4079999988079071 0.16666666666666663,-0.4079999988079071 0.2777777777777777,-0.4079999988079071 0.38888888888888884,-0.4079999988079071 0.5,-0.4079999988079071 0.5,-0.031999998807907104 0.38888888888888884,-0.031999998807907104 0.2777777777777777,-0.031999998807907104 0.16666666666666663,-0.031999998807907104 0.05555555555555558,-0.031999998807907104 -0.05555555555555558,-0.031999998807907104 -0.16666666666666669,-0.031999998807907104 -0.2777777777777778,-0.031999998807907104 -0.3888888888888889,-0.031999998807907104 -0.5,-0.031999998807907104"/>
+            <polyline fill="none" points="-0.5,-0.2199999988079071 -0.3888888888888889,-0.2199999988079071 -0.2777777777777778,-0.2199999988079071 -0.16666666666666669,-0.2199999988079071 -0.05555555555555558,-0.2199999988079071 0.05555555555555558,-0.2199999988079071 0.16666666666666663,-0.2199999988079071 0.2777777777777777,-0.2199999988079071 0.38888888888888884,-0.2199999988079071 0.5,-0.2199999988079071" stroke="#709457" stroke-dasharray="0.02" stroke-width="0.01"/>
+          </g>
+          <g class="control-point">
+            <line stroke="black" stroke-width="0.0188" x1="-0.5" x2="-0.406" y1="-0.2199999988079071" y2="-0.2199999988079071"/>
+            <circle cx="-0.5" cy="-0.2199999988079071" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+          </g>
+          <g class="control-point">
+            <line stroke="black" stroke-width="0.0188" x1="0.5" x2="0.594" y1="-0.2199999988079071" y2="-0.2199999988079071"/>
+            <circle cx="0.5" cy="-0.2199999988079071" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+          </g>
+        </g>
+        <g class="keyframe keyframe0">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.7,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe1">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.67368424,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe2">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.64736843,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe3">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.6210526,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe4">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.5947368,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe5">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.56842107,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe6">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.54210526,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe7">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.51578945,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe8">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.5,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe9">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.39473686,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe10">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,-0.13157895,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe11">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.13157895,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe12">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.39473686,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe13">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.5,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe14">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.51578945,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe15">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.54210526,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe16">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.56842107,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe17">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.5947368,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe18">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.6210526,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe19">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.64736843,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe20">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.67368424,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe21">
+          <g id="a" transform="matrix(1.0,0.0,-0.0,1.0,0.7,-0.22)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <rect fill="none" height="5.0" id="view" stroke="black" stroke-width="0.01" width="5.0" x="-2.0" y="-2.0"/>
+    </g>
+  </g>
+</svg>

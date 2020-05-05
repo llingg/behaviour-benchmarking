@@ -1,0 +1,2 @@
+#!/bin/bash
+compmake /home/linuslingg/duckietown-world/out-comptests/compmake -c "$*" 

@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find light_lf)/launch/lane_following.launch"/>
+  <!-- <include file="$(find light_lf)/launch/indefinite_navigation.launch"/> -->
+</launch>

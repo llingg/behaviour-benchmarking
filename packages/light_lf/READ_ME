@@ -1,0 +1,4 @@
+docker -H autobot01.local build --no-cache -t light_lf:v1 .
+docker -H autobot01.local run -it --rm -v /data:/data --privileged --network=host light_lf:v1
+
+dts duckiebot keyboard_control autobot01 --base_image duckietown/dt-core:daffy-amd64

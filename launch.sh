@@ -4,4 +4,6 @@ set -e
 
 # YOUR CODE BELOW THIS LINE
 # ----------------------------------------------------------------------------
-echo "This is an empty launch script. Update it to launch your application."
+echo "Let's do it"
+
+roslaunch beh_benchmark beh_benchmark.launch veh:=$VEHICLE_NAME

@@ -1,0 +1,4 @@
+
+hw_check:
+docker -H autobot01.local build --no-cache -t hw_check:v1 .
+docker -H autobot01.local run -it --network host -v /data:/data -v /sys/firmware/devicetree:/devfs:ro hw_check:v1

@@ -33,40 +33,34 @@ Set up the offline localization following the instructions found [here](https://
 * Fork and clone the [behaviour_benchmarking](https://gitlab.com/llingg/behaviour_benchmarking/-/tree/master) repository
 * Fork and clone the [behaviour-benchmarking](https://github.com/llingg/behaviour-benchmarking) repository
 * Be sure that `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons` images are updated. If not, pull them:
-
-    `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
-
-    `docker -H BOTNAME .local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
-
-    `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
-
-    `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
+    * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
+    * `docker -H BOTNAME .local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
+    * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
+    * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
 * If all the images are updated you can start the following steps:
 
 1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
 
 2. Start all the drivers in `dt-duckiebot-interface`:
-
-    `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
+    * `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
 
     and the glue nodes that handle the joystick mapping and the kinematics:
-
-    `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
+    * `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
 
     Make sure that this worked properly.
 
 * Within the folder _packages/light_lf_ of your behaviour-benchmarking repository:
 1. You can **build** the docker container as follows:
-    `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
+    * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
 
 4. After that, if there were no errors, you can **run** the light_lf:
-    `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
+    * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
 
 ## Add your contribution
 To see if you contribution has imporved the Lanefollowing just add your contribution into the _packages/light_lf/packages_ folder and build the container again:
-    `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
+    * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
 Then run your version of dt-core:
-    `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
+    * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
 
 For example, when you have worked one the lane_filter, then simply add your entire lane_filter folder into the folder _packages/light_lf/packages_. Please make sure that you use the precise name, as then the default version of whatever package is automatically replaced by yours.
 To get all the different packages in which you can make changes or work in please check [here](https://github.com/duckietown/dt-core/tree/daffy/packages).
@@ -79,11 +73,11 @@ However, it is suggested to develop as you wish but then for the actual Benchmar
 ## Benchmarking
 First of all, for each Duckiebot involved,  run the hw_check you can find within the cloned behaviour-benchmarking repository. Therefor follow the following steps:
 * Go into the folder hw_check by running:
-  `cd ~/behaviour-benchmarking/packages/hw_check`
+  * `cd ~/behaviour-benchmarking/packages/hw_check`
 * Build the container by running:
-  `docker -H BOTNAME.local build --no-cache -t hw_check:v1 .`
+  * `docker -H BOTNAME.local build --no-cache -t hw_check:v1 .`
 * Then run it by running:
-  `docker -H BOTNAME.local run -it --network host -v /data:/data -v /sys/firmware/devicetree:/devfs:ro hw_check:v1`
+  * `docker -H BOTNAME.local run -it --network host -v /data:/data -v /sys/firmware/devicetree:/devfs:ro hw_check:v1`
 
   Then follow the instructions within the terminal.
 
@@ -97,29 +91,29 @@ Place your Duckiebot within the map.
 
 Prepare 3 terminals:
 * Terminal 1: Run the diagnostic toolbox on your Duckiebot:
-    `dts diagnostics run -G Name_BehBench_LF -d 70 --type duckiebot -H BOTNAME.local`
+    * `dts diagnostics run -G Name_BehBench_LF -d 70 --type duckiebot -H BOTNAME.local`
 * Terminal 2: Start the keyboard control on your Duckiebot:
-    `dts duckiebot keyboard_control BOTNAME --base_image duckietown/dt-core:daffy-amd64`
+    * `dts duckiebot keyboard_control BOTNAME --base_image duckietown/dt-core:daffy-amd64`
 To start lane_following press 'a' on your keyboard
 * Terminal 3: Open a Docker container ros being preinstalled by running:
-    `dts cli`
+    * `dts cli`
 Then within this container record a rosbag that subscribes everything by running:
-`rosbag record -a --duration=50 -O Country_University_LoopName_Date_GithubUserName_HWConfig_SWConig.bag`
+* `rosbag record -a --duration=50 -O Country_University_LoopName_Date_GithubUserName_HWConfig_SWConig.bag`
 
 After the rosbag recording as well as the Diagnostic Toolbox have finished you can stop the Duckiebot by pressing 's' on your keyboard.
 Then do the follwing steps:
 * Copy the recorded rosbag from the Docker container onto your local computer into the _path_to_bag_folder_ by running:
- `sudo docker cp dts-cli-run-helper:/code/catkin_ws/src/dt-gui-tools/BAG_NAME.bag ~/path_to_bag_folder`
+  * `sudo docker cp dts-cli-run-helper:/code/catkin_ws/src/dt-gui-tools/BAG_NAME.bag ~/path_to_bag_folder`
 or generally:
- `sudo docker cp Docker_Container_Name:/place_within_container/where_bag_was_recorded/BAG_NAME.bag ~/path_to_bag_folder`
+  * `sudo docker cp Docker_Container_Name:/place_within_container/where_bag_was_recorded/BAG_NAME.bag ~/path_to_bag_folder`
 * Make sure thet the bag is readable by running:
-`sudo chmod 777 BAG_NAME.bag`
+  * `sudo chmod 777 BAG_NAME.bag`
 * Run the post_processor by running:
-`docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAG_NAME.BAG -e OUTPUT_BAG_PATH=/data/processed_BAG_NAME.BAG -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`
+  * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAG_NAME.BAG -e OUTPUT_BAG_PATH=/data/processed_BAG_NAME.BAG -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`
 You need to know where your bag is. The folder containing it is referred as PATH_TO_BAG_FOLDER in the command above. it is recommended to create new separate folders for each Benchmark (with date and/or sequence number).
 When the container stops, then you should have a new bag called processed_BAG_NAME.BAG inside of your PATH_TO_BAG_FOLDER. (This can take more than a minute, please be patient)
 * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map. The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line:
-`docker run --rm  -e  ATMSGS_BAG=/data/processed_BAG_NAME.BAG -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v PATH_TO_BAG_FOLDER:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
+* `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAG_NAME.BAG -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v PATH_TO_BAG_FOLDER:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
 A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
 
 * Visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.

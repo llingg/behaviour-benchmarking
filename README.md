@@ -14,9 +14,11 @@
 Needed?
 ## Loop Assembly and map making
 First assemble the tiles to a 2x3 closed loop as seen below.
+
 ![linus_loop](/media/linus_loop.png)
 
 Further place the Watchtowers around the loop susch that each part of it is seen by at least one Watchtower. To get really accurate results it is recommended to place them as seen below
+
 ![WT position](/media/Linus_Loop_WT_correct.png).
 
 Fork and clone the [Duckietown-world repository](https://github.com/duckietown/duckietown-world) and follow the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) to create your own map. Or simply add the [linus_loop folder](/linus_loop_data/linus_loop) into the _visualization/maps_ folder of your duckietown-world repository and the [linus_loop yaml file](/linus_loop_data/linus_loop_no_at.yaml) into the _src/duckietown_world/data/gd1/maps_ folder of your duckietown-world repository.
@@ -58,9 +60,9 @@ Set up the offline localization following the instructions found [here](https://
 
 ## Add your contribution
 To see if you contribution has imporved the Lanefollowing just add your contribution into the _packages/light_lf/packages_ folder and build the container again:
-    * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
+  * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
 Then run your version of dt-core:
-    * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
+  * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
 
 For example, when you have worked one the lane_filter, then simply add your entire lane_filter folder into the folder _packages/light_lf/packages_. Please make sure that you use the precise name, as then the default version of whatever package is automatically replaced by yours.
 To get all the different packages in which you can make changes or work in please check [here](https://github.com/duckietown/dt-core/tree/daffy/packages).
@@ -78,6 +80,7 @@ First of all, for each Duckiebot involved,  run the hw_check you can find within
   * `docker -H BOTNAME.local build --no-cache -t hw_check:v1 .`
 * Then run it by running:
   * `docker -H BOTNAME.local run -it --network host -v /data:/data -v /sys/firmware/devicetree:/devfs:ro hw_check:v1`
+
 
   Then follow the instructions within the terminal.
 
@@ -110,10 +113,12 @@ or generally:
   * `sudo chmod 777 BAG_NAME.bag`
 * Run the post_processor by running:
   * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAG_NAME.BAG -e OUTPUT_BAG_PATH=/data/processed_BAG_NAME.BAG -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`
-You need to know where your bag is. The folder containing it is referred as PATH_TO_BAG_FOLDER in the command above. it is recommended to create new separate folders for each Benchmark (with date and/or sequence number).
+
+  You need to know where your bag is. The folder containing it is referred as PATH_TO_BAG_FOLDER in the command above. it is recommended to create new separate folders for each Benchmark (with date and/or sequence number).
 When the container stops, then you should have a new bag called processed_BAG_NAME.BAG inside of your PATH_TO_BAG_FOLDER. (This can take more than a minute, please be patient)
 * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map. The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line:
 * `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAG_NAME.BAG -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v PATH_TO_BAG_FOLDER:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
+
 A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
 
 * Visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.

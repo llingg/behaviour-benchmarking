@@ -100,8 +100,9 @@ Prepare 3 terminals:
 To start lane_following press 'a' on your keyboard
 * Terminal 3: Open a Docker container ros being preinstalled by running:
     * `dts cli`
-Then within this container record a rosbag that subscribes everything by running:
-* `rosbag record -a --duration=50 -O Country_University_LoopName_Date_GithubUserName_HWConfig_SWConig.bag`
+
+    Then within this container record a rosbag that subscribes everything by running:
+    * `rosbag record -a --duration=50 -O Country_University_LoopName_Date_GithubUserName_HWConfig_SWConig.bag`
 
 After the rosbag recording as well as the Diagnostic Toolbox have finished you can stop the Duckiebot by pressing 's' on your keyboard.
 Then do the follwing steps:
@@ -119,25 +120,25 @@ When the container stops, then you should have a new bag called processed_BAG_NA
 * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map. The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line:
 * `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAG_NAME.BAG -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v PATH_TO_BAG_FOLDER:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
 
-A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
+  A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
 
 * Visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
 
 * Place the .yaml file created by the graphoptimizer into the _data/BenchmarkXY/yaml_ folder and the .json file downloaded from the dashboard into the  _data/BenchmarkXY_ folder of your behaviour_benchmarking repository.
 * Create a virtual environment as you already did for when you added the map to your duckietown-world repository or when you added the exact position of the ground april tags. However, this time, please create this virtual environment within your cloned behaviour_benchmarking repository by following the instructions below:
 1. First, if not already done, install venv by running:
-    * `sudo apt install -y python3-venv`
+   * `sudo apt install -y python3-venv`
 2. Then, cd into your behaviour_benchmarking repository, and create the venv:
-    * `cd ~/behaviour_benchmarking`
-    * `python3.7 -m venv duckietown-world-venv`
-    * `source duckietown-world-venv/bin/activate`
+   * `cd ~/behaviour_benchmarking`
+   * `python3.7 -m venv duckietown-world-venv`
+   * `source duckietown-world-venv/bin/activate`
 3. Now, you can setup duckietown-world. Inside of the virtual environment (you should see “(duckietown-worl-venv)” in front of your prompt line), please run:
-    * `python3 -m pip install --upgrade pip`
-    * `python3 -m pip install -r requirements.txt`
-    * `python3 -m pip install jupyter`
-    * `python3 setup.py develop --no-deps`
+   * `python3 -m pip install --upgrade pip`
+   * `python3 -m pip install -r requirements.txt`
+   * `python3 -m pip install jupyter`
+   * `python3 setup.py develop --no-deps`
 4. Then start the notebook:
-    * `jupyter notebook`
+   * `jupyter notebook`
 
     If you encounter any issues with the steps above, please click [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) for more detailed instructions.
 

@@ -127,18 +127,18 @@ A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
 * Place the .yaml file created by the graphoptimizer into the _data/BenchmarkXY/yaml_ folder and the .json file downloaded from the dashboard into the  _data/BenchmarkXY_ folder of your behaviour_benchmarking repository.
 * Create a virtual environment as you already did for when you added the map to your duckietown-world repository or when you added the exact position of the ground april tags. However, this time, please create this virtual environment within your cloned behaviour_benchmarking repository by following the instructions below:
 1. First, if not already done, install venv by running:
-    `sudo apt install -y python3-venv`
+    * `sudo apt install -y python3-venv`
 2. Then, cd into your behaviour_benchmarking repository, and create the venv:
-    `cd ~/behaviour_benchmarking`
-    `python3.7 -m venv duckietown-world-venv`
-    `source duckietown-world-venv/bin/activate`
+    * `cd ~/behaviour_benchmarking`
+    * `python3.7 -m venv duckietown-world-venv`
+    * `source duckietown-world-venv/bin/activate`
 3. Now, you can setup duckietown-world. Inside of the virtual environment (you should see “(duckietown-worl-venv)” in front of your prompt line), please run:
-    `python3 -m pip install --upgrade pip`
-    `python3 -m pip install -r requirements.txt`
-    `python3 -m pip install jupyter`
-    `python3 setup.py develop --no-deps`
+    * `python3 -m pip install --upgrade pip`
+    * `python3 -m pip install -r requirements.txt`
+    * `python3 -m pip install jupyter`
+    * `python3 setup.py develop --no-deps`
 4. Then start the notebook:
-    `jupyter notebook`
+    * `jupyter notebook`
 
     If you encounter any issues with the steps above, please click [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) for more detailed instructions.
 

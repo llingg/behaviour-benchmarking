@@ -19,7 +19,7 @@ First assemble the tiles to a 2x3 closed loop as seen below.
 Further place the Watchtowers around the loop susch that each part of it is seen by at least one Watchtower. To get really accurate results it is recommended to place them as seen below
 ![WT position](/media/Linus_Loop_WT_correct.png).
 
-Fork and clone the [Duckietown-world repository](https://github.com/duckietown/duckietown-world) and follow the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) to create your own map. Or simply add the [linus_loop](/media/linus_loop) folder into the _visualization/maps_ folder of your duckietown-world repository and the [linus_loop](/media/linus_loop_no_at.yaml) into the _src/duckietown_world/data/gd1/maps_ folder of your duckietown-world repository.
+Fork and clone the [Duckietown-world repository](https://github.com/duckietown/duckietown-world) and follow the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) to create your own map. Or simply add the [linus_loop folder](/linus_loop_data/linus_loop) into the _visualization/maps_ folder of your duckietown-world repository and the [linus_loop yaml file](/linus_loop_data/linus_loop_no_at.yaml) into the _src/duckietown_world/data/gd1/maps_ folder of your duckietown-world repository.
 
 Then place at least 8 Ground April Tags roughly as seen in the images such that each watchtower sees at least 2 Apriltags.
 After follow the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_apriltags_specs.html) to add their exact position to the map.
@@ -29,17 +29,18 @@ After follow the instructions found [here](https://docs.duckietown.org/daffy/opm
 Set up the offline localization following the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_demo.html)  (Steps 3.1-3.5).
 
 ## Software preparation
+* TODO: Instructions how to set Gain=1
 * Fork and clone the [behaviour_benchmarking](https://gitlab.com/llingg/behaviour_benchmarking/-/tree/master) repository
 * Fork and clone the [behaviour-benchmarking](https://github.com/llingg/behaviour-benchmarking) repository
 * Be sure that `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons` images are updated. If not, pull them:
 
-    `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7`
+    `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
 
-    `docker -H BOTNAME .local pull duckietown/dt-car-interface:daffy-arm32v7`
+    `docker -H BOTNAME .local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
 
-    `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7`
+    `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
 
-    `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7`
+    `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
 * If all the images are updated you can start the following steps:
 
 1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
@@ -76,7 +77,7 @@ In the end it is tha same as if you would simply clone the [dt-core](https://git
 However, it is suggested to develop as you wish but then for the actual Benchmarking to use the way explained above which uses a lighter version of the launch files.
 
 ## Benchmarking
-First of all run the hw_check you can find within the cloned behaviour-benchmarking repository. Therefor follow the following steps:
+First of all, for each Duckiebot involved,  run the hw_check you can find within the cloned behaviour-benchmarking repository. Therefor follow the following steps:
 * Go into the folder hw_check by running:
   `cd ~/behaviour-benchmarking/packages/hw_check`
 * Build the container by running:
@@ -90,6 +91,7 @@ First of all run the hw_check you can find within the cloned behaviour-benchmark
 
 * When the Docker Container has finished, visit: `http://BOTNAME.local:8082/config` and download the .yaml file with your information in the name.
 * Place the .yaml file within the _data/BenchmarkXY_ folder of your behaviour_benchmarking repository.
+* Furthermore, set up your own [autolab fleet rooster](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_fleet_roster.html)
 
 Place your Duckiebot within the map.
 
@@ -147,4 +149,6 @@ Arithmetic mean:
 $$\bar{x}=\frac{1}{n} \sum_{i=1}^n x_i $$
 
 Standard deviation:
-$$s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2}$$
+$$s=\sqrt{\frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2}$$
+
+### Termination Criteria

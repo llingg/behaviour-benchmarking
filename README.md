@@ -56,7 +56,7 @@ Set up the offline localization following the instructions found [here](https://
     * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
 
 4. After that, if there were no errors, you can **run** the light_lf:
-    * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
+    * `docker -H BOTNAME.local run -it --rm -v /data:/data --privileged --network=host --name behaviour_benchmarking light_lf:BRANCH_NAME`
 
 ## Add your contribution
 To see if you contribution has imporved the Lanefollowing just add your contribution into the _packages/light_lf/packages_ folder and build the container again:

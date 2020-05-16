@@ -1,6 +1,6 @@
 FROM duckietown/dt-ros-commons:daffy-amd64
 
-MAINTAINER Amaury Camus <camusam@ethz.ch>
+MAINTAINER Linus Camus <camusam@ethz.ch>
 
 ENV DISPLAY $DISPLAY
 ENV QT_X11_NO_MITSHM 1

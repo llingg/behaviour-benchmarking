@@ -1,0 +1,6 @@
+[submodule "apriltags"]
+	path = apriltags
+	url = https://github.com/AprilRobotics/apriltag.git
+[submodule "packages/08-post-processing/lib/src/apriltags3-py/apriltags"]
+	path = packages/08-post-processing/lib/src/apriltags3-py/apriltags
+	url = https://github.com/AprilRobotics/apriltag.git

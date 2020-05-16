@@ -1,16 +1,16 @@
 version: '3'
 services:
     localization:
-        image: duckietown/cslam-graphoptimizer:daffy-amd64
+        image: duckietown/graphoptimizer:v1
         # build:
         #     context: .
         environment:
             ATMSGS_BAG: /data/processed_lf_day_CH_linusloop_300420_50sec_take_13.bag
-            OUTPUT_DIR: /challenges/challenge-evaluation-output
-            ROS_MASTER_IP: 192.168.1.70
+            OUTPUT_DIR: /data
+            ROS_MASTER_IP: 192.168.1.77
             ROS_MASTER : duckietown20
             DUCKIETOWN_WORLD_FORK : llingg
             MAP_NAME : linus_loop
         network_mode: host
         volumes:
-            - ~/bag/010520_lf/take13:/data
+            - ~/bag/take13:/data

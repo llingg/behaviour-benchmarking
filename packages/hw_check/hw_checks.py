@@ -90,7 +90,7 @@ def getsd():
 
 print("Welcome to the Behaviour Benchmarking Hardware check, please answer the following questions carefully\n")
 country = input("in what country are you running this test? (Ex.: CH, CA etc.)\n")
-institution = input("From what institution you? (Ex.: ETHZ, MIT etc.)\n")
+autolab = input("In what autolab are you working? (Ex.: ETHZ, MIT etc.)\n")
 db_version = input("According to https://docs.duckietown.org/daffy/opmanual_duckiebot/out/duckiebot_configurations.html, please enter the type of your Duckiebot (DB19, DB18, DB18-Encoder, DB18-Robotarium, DB20, DBv2)\n")
 print("Please follow the following instructions to specify and doublecheck the important components\n")
 print("Please visit https://gitlab.com/llingg/behaviour_benchmarking/-/blob/master/hw-checklist.md and follow the instructions of step 1-6\n")
@@ -145,7 +145,7 @@ else:
 
 tester_name = input("Enter your name:\n")
 
-filename = "/data/config/"+country+"_"+institution+"_"+tester_name+"_"+date+"_"+db_version+"_hardware-compliance.yaml"
+filename = "/data/config/"+country+"_"+autolab+"_"+tester_name+"_"+date+"_"+db_version+"_hardware-compliance.yaml"
 
 f= open(filename,"w+")
 f.write("verdict: "+verdict+"\n")
@@ -153,7 +153,7 @@ f.write("hostname: "+hostname+"\n")
 f.write("db_version: "+db_version+"\n")
 f.write("date: "+date+"\n")
 f.write("country: "+country+"\n")
-f.write("institution: "+institution+"\n")
+f.write("autolab: "+autolab+"\n")
 f.write("mac-adress: "+mac+"\n")
 f.write("platform: "+platform+"\n")
 f.write("hat_version: "+hat_version+"\n")

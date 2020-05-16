@@ -1,0 +1,13 @@
+version: '3'
+services:
+    post-processor:
+        image: duckietown/post-processor:master19-amd64
+        network_mode: "host"
+
+        environment:
+            INPUT_BAG_PATH: //data/raw
+            OUTPUT_BAG_PATH: /data/processed.bag
+            ROS_MASTER_URI: http://172.31.168.115:11311            
+        # network_mode: host
+        volumes:
+            - ~/AIDO3_experiment_data/submission_4238/eval0/20191107_150105/data/logs_raw:/data

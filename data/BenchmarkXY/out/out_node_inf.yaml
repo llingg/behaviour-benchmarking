@@ -1,0 +1,12 @@
+/autobot01/lane_filter_node/lane_pose:
+  connections: 1
+  frequency: 7.692018779342723
+  message_count: 362
+/autobot01/line_detector_node/segment_list:
+  connections: 1
+  frequency: 7.698499140084541
+  message_count: 374
+/rosout:
+  connections: 22
+  frequency: 44.75380257043625
+  message_count: 49

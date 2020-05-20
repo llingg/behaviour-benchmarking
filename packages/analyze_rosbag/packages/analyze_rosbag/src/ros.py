@@ -46,7 +46,6 @@ class Ros_Analyze(DTROS):
         find_float = r'\d+\.\d+'
         # print(type(set))
         start = True
-
         # for _, msg, _ in bag.read_messages(topics=['/diagnostics']):
         #     temp = message_converter.convert_ros_message_to_dictionary(msg)
         #     print(temp)
@@ -70,12 +69,12 @@ class Ros_Analyze(DTROS):
             time = Ros_Analyze.stamp2time_decimal(temp.get('header').get('stamp'))
             lane_pose['time_rel'].append(float(time-start_time))
 
-# {'status': 0, 'in_lane': True, 'phi': 1.2000000476837158, 'phi_ref': 0.0, 'd': -0.041999999433755875, 'curvature_ref': 0.0, 'curvature': 0.0, 'd_ref': 0.0, 'header': {'stamp': {'secs': 1589899535, 'nsecs': 338249921}, 'frame_id': '', 'seq': 88751}, 'sigma_phi': 0.0, 'v_ref': 0.0, 'sigma_d': 0.0}
 
 
         for _, msg, _ in bag.read_messages(topics=['/rosout']):
             temp = message_converter.convert_ros_message_to_dictionary(msg)
             msg_string = temp.get('msg')
+            #print(temp.get('name'))
             if temp.get('name') == '/{}/line_detector_node'.format(os.environ['DUCKIEBOT']) and re.search(find_msg_re, temp.get('msg')):
                 time = Ros_Analyze.stamp2time(temp.get('header').get('stamp'))
                 for line in msg_string.split('\n'):
@@ -83,6 +82,7 @@ class Ros_Analyze(DTROS):
                         snippet = re.findall(find_line_re,  line)[0]
                         lat['time'].append(time)
                         lat['meas'].append(re.findall(r'\d+.\d+',snippet)[0])
+
             if temp.get('name') == '/{}/kinematics_node'.format(os.environ['DUCKIEBOT']):
                 for line in msg_string.split('\n'):
                     if re.search(find_line_set,  line):

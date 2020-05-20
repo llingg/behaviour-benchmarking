@@ -1,0 +1,4 @@
+# LIST YOUR PYTHON PACKAGES HERE
+pyrosbag
+pyaml
+rospy_message_converter

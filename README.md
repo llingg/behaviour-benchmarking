@@ -44,6 +44,7 @@ Set up the offline localization following the instructions found [here](https://
     * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
     * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
     * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
+    * duckietown shell commands commit 'commit 62809665b108832cdf58544ebb1d7a1d5ed997fc' make sure to have dts on daffy... how do I guarantee that diagnostics did not change??
 * If all the images are updated you can start the following steps:
 
 1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
@@ -103,7 +104,7 @@ Prepare 3 terminals:
 * Terminal 2: Start the keyboard control on your Duckiebot:
     * `dts duckiebot keyboard_control BOTNAME --base_image duckietown/dt-core:daffy-amd64`
 To start lane_following press 'a' on your keyboard
-* Terminal 3: Open a Docker container ros being preinstalled by running:
+* Terminal 3: Open a Docker container ros being preinstalled by running: !OR record a rosbag directly on your computer if you have the necessary setup installed
     * `dts cli`
 
     Then within this container record a rosbag that subscribes everything by running:
@@ -172,9 +173,10 @@ To record a a bag that records all the things published by the duckiebot
 6. then run dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME
 7. then record a bag with the command: 'rosbag record -O /data/bagrec/db_bag_bb.bag --duration 50 /autobot01/line_detector_node/segment_list /autobot01/lane_filter_node/lane_pose /rosout'
     might also be interesting: /autobot01/lane_controller_node/car_cmd (get freq to see uptade freq of controller)
+    Note that if you are using Master 19 isntead of '/autobot01/lane_filter_node/lane_pose' record: '/autobot02/lane_controller_node/lane_pose'
 8. after the recording is done exit the container and run again 'ssh AUTOBOT_NAME' and run 'sudo umount /data/bag'
 9. then remove the USB drive and plug it into your computer
-10. run analyze-rosbag??
+10. run analyze-rosbag by cd into de analyze_rosbag folder found in behaviour-benchmarking repository, build it by running 'dts devel build -f --arch amd64', then run it with: 'docker run -v path/to/bag/folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=blabla -it --rm duckietown/behaviour-benchmarking:v1-amd64'
 
 
 # For distance keeping:

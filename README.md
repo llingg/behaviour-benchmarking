@@ -3,8 +3,9 @@
 ## Requiries
 
 * Requires: [Duckiebot (correctly assembled, initialized and calibrated)](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/building_duckiebot_c0.html)
-* Requires: [Localization standoff](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html)
+* Requires: [Localization standoff](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html) !Be careful with placing the AprilTag in the very center of the DB as the localization system that measures the Ground Truth expects the April Tag to be exactly in the center! Future work potential!
 * Requires: [Autobot](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html)
+* ! Make sure that standoff has an apriltag with a different name as your Duckiebot! So if you use the Autobot18 AprilTag make sure your DB is named differently!
 * Requires: [2 straight and 4 curved tiles](https://docs.duckietown.org/daffy/opmanual_duckietown/out/dt_ops_appearance_specifications.html)
 * Requires: [At least 4 Watchtowers in WT19B configuration](https://docs.duckietown.org/daffy/opmanual_autolab/out/watchtower_hardware.html)
 * Requires: [X Ground April tags](https://github.com/duckietown/docs-resources_autolab/blob/daffy/AprilTags/AprilTags_localization_ID300-399.pdf)
@@ -13,6 +14,10 @@
 ## HW set up
 Needed?
 ## Loop Assembly and map making
+Pleas note that the loop used for these benchmarks does NOT respect the Duckietown specifications and rules as it is not allowed to have two lanes next to each other without any visual barrier.
+However as all the experiments worked out fine and as the space was limited, the Benchmarks were done on this loop anyways.
+In the future it is strongly recommended to change the settings to a 3x3 loop that does respect the [Duckietown specifications](https://docs.duckietown.org/daffy/opmanual_duckietown/out/dt_ops_appearance_specifications.html)
+
 First assemble the tiles to a 2x3 closed loop as seen below.
 
 ![linus_loop](/media/linus_loop.png)
@@ -151,4 +156,33 @@ $$\bar{x}=\frac{1}{n} \sum_{i=1}^n x_i $$
 Standard deviation:
 $$s=\sqrt{\frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2}$$
 
+Note: the localization system that measures the ground truth, measures the position of the Apriltag placed on the localization standoff of your Duckiebot. This means that if this Apriltag is not placed very accurately, your results will be false.
+
 ### Termination Criteria
+
+
+# New run stuff
+
+To record a a bag that records all the things published by the duckiebot
+1. plug a usb drive (with at least 32 GB) into your Duckiebot
+2. ssh into your db by running: 'ssh AUTOBOT_NAME' then create bag folder by running: 'sudo mkdir /data/bag'
+3. run 'lsblk' to see where your USB drive is, under name you should see sda1 or sdb1 with the size a bit less then the actual size of your USB (about 28.7GB for a 32 USB)
+4. mount the above created folder to the usb by running: 'sudo mount -t vfat /dev/sdb1 /data/bag/ -o uid=1000,gid=1000,umask=000'
+5. then press ctrl d to exit the Duckiebot
+6. then run dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME
+7. then record a bag with the command: 'rosbag record -O /data/bagrec/db_bag_bb.bag --duration 50 /autobot01/line_detector_node/segment_list /autobot01/lane_filter_node/lane_pose /rosout'
+    might also be interesting: /autobot01/lane_controller_node/car_cmd (get freq to see uptade freq of controller)
+8. after the recording is done exit the container and run again 'ssh AUTOBOT_NAME' and run 'sudo umount /data/bag'
+9. then remove the USB drive and plug it into your computer
+10. run analyze-rosbag??
+
+
+# For distance keeping:
+interesting nodes:
+/autobot01/vehicle_avoidance_control_node/car_cmd                            171 msgs @   5.3 Hz : duckietown_msgs/Twist2DStamped  
+             /autobot01/vehicle_avoidance_control_node/switch                               3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped     
+             /autobot01/vehicle_avoidance_control_node/vehicle_detected                    40 msgs @   2.1 Hz : duckietown_msgs/BoolStamped     
+             /autobot01/vehicle_detection_node/detection                                   41 msgs @   2.1 Hz : duckietown_msgs/BoolStamped     
+             /autobot01/vehicle_detection_node/detection_time                              40 msgs @   2.0 Hz : std_msgs/Float32                
+             /autobot01/vehicle_detection_node/switch                                       3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped     
+             /autobot01/vehicle_filter_node/switch                                          3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped

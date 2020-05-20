@@ -1,5 +1,5 @@
 # parameters
-ARG REPO_NAME="bm-analyze-ros"
+ARG REPO_NAME="behaviour-benchmarking"
 
 # ==================================================>
 # ==> Do not change this code

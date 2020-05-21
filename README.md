@@ -96,9 +96,31 @@ First of all, for each Duckiebot involved,  run the hw_check you can find within
 * Place the .yaml file within the _data/BenchmarkXY_ folder of your behaviour_benchmarking repository.
 * Furthermore, set up your own [autolab fleet rooster](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_fleet_roster.html)
 
+
+Duckiebot preparation:
+To be able to record a rosbag on your Duckiebot please follow the steps below. This rosbag records all messages publisher to the for the specific Benchmark important nodes. 
+The steps below prepare Terminal 4 of the four terminals mentioned below. Please note that the rosbag that will be recorded will automatically be saved on your USB drive
+* Plug a USB drive (of at least 32 Gb) into your Duckiebot
+* Ssh into your Duckiebot by running:
+    * `ssh AUTOBOT_NAME`
+* Within your Duckiebot, create a folder with the name `bag` by running the command:
+    * `sudo mkdir /data/bag`
+* Use the command `lsblk` to see where your USB drive is located. Under name you should see sda1 or sdb1 and the size should be a bit less then the actual size of your drive (about 28.7 Gb for a 32 Gb drive)
+* Then mount the folder created above to your USB drive by running:
+    * `sudo mount -t vfat /dev/sdb1 /data/bag/ -o uid=1000,gid=1000,umask=000`
+* Then exit your Duckiebot by pressing `Crtl + d`
+* Then start and enter a container on your Duckiebot by running:
+    * `dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME`
+*  Then prepare the command to record a rosbag within that container: 
+    * `rosbag record -O /data/bagrec/db_bag_bb.bag --duration 50 /AUTOBOT_NAME/line_detector_node/segment_list /AUTOBOT_NAME/lane_filter_node/lane_pose /rosout`
+    Please note that if you are using Master19 you should subscribe to `/AUTOBOT_NAME/lane_controller_node/lane_pose` instead of `/AUTOBOT_NAME/lane_filter_node/lane_pose`
+    * ToDo: might also be interesting: `/AUTOBOT_NAME/lane_controller_node/car_cmd` (get freq to see uptade freq of controller)
+
+
+
 Place your Duckiebot within the map.
 
-Prepare 3 terminals:
+Prepare 4 terminals:
 * Terminal 1: Run the diagnostic toolbox on your Duckiebot:
     * `dts diagnostics run -G Name_BehBench_LF -d 70 --type duckiebot -H BOTNAME.local`
 * Terminal 2: Start the keyboard control on your Duckiebot:
@@ -107,18 +129,27 @@ To start lane_following press 'a' on your keyboard
 * Terminal 3: Open a Docker container ros being preinstalled by running: !OR record a rosbag directly on your computer if you have the necessary setup installed
     * `dts cli`
 
-    Then within this container record a rosbag that subscribes everything by running:
+    Then within this container record a rosbag that subscribes everything published by the localization system by running:
     * `rosbag record -a --duration=50 -O Country_University_LoopName_Date_GithubUserName_HWConfig_SWConig.bag`
+
+* Terminal 4: Run the command already prepared above to record a rosbag that subscribes to the needed topics.
+
 
 After the rosbag recording as well as the Diagnostic Toolbox have finished you can stop the Duckiebot by pressing 's' on your keyboard.
 Then do the follwing steps:
-* Copy the recorded rosbag from the Docker container onto your local computer into the _path_to_bag_folder_ by running:
+* Exit the container of Terminal 4 by pressing: `crt+d`
+* Ssh into your Duckiebot again by running:
+    * `ssh AUTOBOT_NAME`
+* Within your Duckiebot unmount the folder by running:
+    * `sudo umount /data/bag`
+* Then remove the USB drive from your Duckiebot and plug it into your local Computer. Copy the `db_bag_bb.bag` that should be on your USB drive into the folder `bag`on your local computer
+* Copy the recorded rosbag of the localization system from the Docker container onto your local computer into the _path_to_bag_folder_ by running:
   * `sudo docker cp dts-cli-run-helper:/code/catkin_ws/src/dt-gui-tools/BAG_NAME.bag ~/path_to_bag_folder`
 or generally:
   * `sudo docker cp Docker_Container_Name:/place_within_container/where_bag_was_recorded/BAG_NAME.bag ~/path_to_bag_folder`
-* Make sure thet the bag is readable by running:
+* Make sure that both the bags are readable by running:
   * `sudo chmod 777 BAG_NAME.bag`
-* Run the post_processor by running:
+* Run the post_processor for the rosbag of the localization system by running:
   * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAG_NAME.BAG -e OUTPUT_BAG_PATH=/data/processed_BAG_NAME.BAG -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`
 
   You need to know where your bag is. The folder containing it is referred as PATH_TO_BAG_FOLDER in the command above. it is recommended to create new separate folders for each Benchmark (with date and/or sequence number).
@@ -127,6 +158,14 @@ When the container stops, then you should have a new bag called processed_BAG_NA
 * `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAG_NAME.BAG -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v PATH_TO_BAG_FOLDER:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
 
   A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
+
+* For the rosbag recorded on the Duckiebot, run analyze-rosbag by:
+    * cd into de `analyze_rosbag` folder found in behaviour-benchmarking repository by running `cd behaviour-benchmarking/analyze_rosbag` 
+    * Build the repository by running: `dts devel build -f --arch amd64`
+    * Then run it with: `docker run -v path/to/bag/folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=blabla -it --rm duckietown/behaviour-benchmarking:v1-amd64`
+    * This will create several `.json`files within the `bag`folder that will be used for the Benchmarking later
+
+
 
 * Visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
 
@@ -159,25 +198,16 @@ $$s=\sqrt{\frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2}$$
 
 Note: the localization system that measures the ground truth, measures the position of the Apriltag placed on the localization standoff of your Duckiebot. This means that if this Apriltag is not placed very accurately, your results will be false.
 
+Engineering score: Update frequency, latency, cpu usage etc
+Behaviour score: offset (distance and angle), calculated d and phi compared to ground truth, distance travelled, duration of Benchmark
+
+ToDo: Spit out type of tile where Benchmark was stopped in case of an early termination
+
 ### Termination Criteria
 
-
-# New run stuff
-
-To record a a bag that records all the things published by the duckiebot
-1. plug a usb drive (with at least 32 GB) into your Duckiebot
-2. ssh into your db by running: 'ssh AUTOBOT_NAME' then create bag folder by running: 'sudo mkdir /data/bag'
-3. run 'lsblk' to see where your USB drive is, under name you should see sda1 or sdb1 with the size a bit less then the actual size of your USB (about 28.7GB for a 32 USB)
-4. mount the above created folder to the usb by running: 'sudo mount -t vfat /dev/sdb1 /data/bag/ -o uid=1000,gid=1000,umask=000'
-5. then press ctrl d to exit the Duckiebot
-6. then run dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME
-7. then record a bag with the command: 'rosbag record -O /data/bagrec/db_bag_bb.bag --duration 50 /autobot01/line_detector_node/segment_list /autobot01/lane_filter_node/lane_pose /rosout'
-    might also be interesting: /autobot01/lane_controller_node/car_cmd (get freq to see uptade freq of controller)
-    Note that if you are using Master 19 isntead of '/autobot01/lane_filter_node/lane_pose' record: '/autobot02/lane_controller_node/lane_pose'
-8. after the recording is done exit the container and run again 'ssh AUTOBOT_NAME' and run 'sudo umount /data/bag'
-9. then remove the USB drive and plug it into your computer
-10. run analyze-rosbag by cd into de analyze_rosbag folder found in behaviour-benchmarking repository, build it by running 'dts devel build -f --arch amd64', then run it with: 'docker run -v path/to/bag/folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=blabla -it --rm duckietown/behaviour-benchmarking:v1-amd64'
-
+The Benchmark is officially terminated after the 50 seconds are up. However when the Duckiebot is out of sight for more then 3 seconds or if the Duckiebot takes more then 30 seconds 
+to get across 1 tile the Benchmark will be terminated early. This will be taken into account into the final Benchmark score. 
+An early termination will not be considered as a failiure but will just lead to a lower score.
 
 # For distance keeping:
 interesting nodes:

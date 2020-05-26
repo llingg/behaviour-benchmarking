@@ -98,7 +98,7 @@ First of all, for each Duckiebot involved,  run the hw_check you can find within
 
 
 Duckiebot preparation:
-To be able to record a rosbag on your Duckiebot please follow the steps below. This rosbag records all messages publisher to the for the specific Benchmark important nodes. 
+To be able to record a rosbag on your Duckiebot please follow the steps below. This rosbag records all messages publisher to the for the specific Benchmark important nodes.
 The steps below prepare Terminal 4 of the four terminals mentioned below. Please note that the rosbag that will be recorded will automatically be saved on your USB drive
 * Plug a USB drive (of at least 32 Gb) into your Duckiebot
 * Ssh into your Duckiebot by running:
@@ -111,7 +111,7 @@ The steps below prepare Terminal 4 of the four terminals mentioned below. Please
 * Then exit your Duckiebot by pressing `Crtl + d`
 * Then start and enter a container on your Duckiebot by running:
     * `dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME`
-*  Then prepare the command to record a rosbag within that container: 
+*  Then prepare the command to record a rosbag within that container:
     * `rosbag record -O /data/bagrec/db_bag_bb.bag --duration 50 /AUTOBOT_NAME/line_detector_node/segment_list /AUTOBOT_NAME/lane_filter_node/lane_pose /rosout`
     Please note that if you are using Master19 you should subscribe to `/AUTOBOT_NAME/lane_controller_node/lane_pose` instead of `/AUTOBOT_NAME/lane_filter_node/lane_pose`
     * ToDo: might also be interesting: `/AUTOBOT_NAME/lane_controller_node/car_cmd` (get freq to see uptade freq of controller)
@@ -152,6 +152,14 @@ or generally:
 * Run the post_processor for the rosbag of the localization system by running:
   * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAG_NAME.BAG -e OUTPUT_BAG_PATH=/data/processed_BAG_NAME.BAG -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`
 
+NEW Post-processor:
+build:
+docker build -t duckietown/post-processing:test .
+run:
+docker run --name post_processor -it --rm -e INPUT_BAG_PATH=/data/lf_day_CH_linusloop_300420_50sec_take_14 -e OUTPUT_BAG_PATH=/data/processed_lf_day_CH_linusloop_300420_50sec_take_14.bag -e ROS_MASTER_URI=http://192.168.1.97:11311 -v /home/linuslingg/bag:/data duckietown/post-processing:test
+
+
+
   You need to know where your bag is. The folder containing it is referred as PATH_TO_BAG_FOLDER in the command above. it is recommended to create new separate folders for each Benchmark (with date and/or sequence number).
 When the container stops, then you should have a new bag called processed_BAG_NAME.BAG inside of your PATH_TO_BAG_FOLDER. (This can take more than a minute, please be patient)
 * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map. The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line:
@@ -160,7 +168,7 @@ When the container stops, then you should have a new bag called processed_BAG_NA
   A _.yaml_ file will be stored in the folder PATH_TO_BAG_FOLDER.
 
 * For the rosbag recorded on the Duckiebot, run analyze-rosbag by:
-    * cd into de `analyze_rosbag` folder found in behaviour-benchmarking repository by running `cd behaviour-benchmarking/analyze_rosbag` 
+    * cd into de `analyze_rosbag` folder found in behaviour-benchmarking repository by running `cd behaviour-benchmarking/analyze_rosbag`
     * Build the repository by running: `dts devel build -f --arch amd64`
     * Then run it with: `docker run -v path/to/bag/folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=blabla -it --rm duckietown/behaviour-benchmarking:v1-amd64`
     * This will create several `.json`files within the `bag`folder that will be used for the Benchmarking later
@@ -205,8 +213,8 @@ ToDo: Spit out type of tile where Benchmark was stopped in case of an early term
 
 ### Termination Criteria
 
-The Benchmark is officially terminated after the 50 seconds are up. However when the Duckiebot is out of sight for more then 3 seconds or if the Duckiebot takes more then 30 seconds 
-to get across 1 tile the Benchmark will be terminated early. This will be taken into account into the final Benchmark score. 
+The Benchmark is officially terminated after the 50 seconds are up. However when the Duckiebot is out of sight for more then 3 seconds or if the Duckiebot takes more then 30 seconds
+to get across 1 tile the Benchmark will be terminated early. This will be taken into account into the final Benchmark score.
 An early termination will not be considered as a failiure but will just lead to a lower score.
 
 # For distance keeping:
@@ -218,3 +226,7 @@ interesting nodes:
              /autobot01/vehicle_detection_node/detection_time                              40 msgs @   2.0 Hz : std_msgs/Float32                
              /autobot01/vehicle_detection_node/switch                                       3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped     
              /autobot01/vehicle_filter_node/switch                                          3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped
+
+# Future work
+save data online automatically (not up to user)
+set up remaining Benchmarks

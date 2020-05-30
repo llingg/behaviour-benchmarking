@@ -90,7 +90,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
 ## General information
   The Benchmarking is set up in a way such that up to to point 6 the procedure stays the same no matter what you are Benchmarking. Starting at point 6 there will be slight changes in the processing and analysis of the data depending on the Benchmark. However these changes are very small and the main changes are within the metrics etc.
   The goal of every Benchmark is to produce a final pdf file that reports the results and compares them to another Benchmark of your choice. Ideally this benchmark it is compared to is the mean of all the Benchmarks ran all over the world of this type ran with the standard Duckietown software (for example the stable daffy commit of the containers `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons`).
-  However to be able to compare your Software with another one in any type of Benchmark, you first need to run at least 2 experiments. For each experiment there will be some recorded bags etc which then will be processed, analyzed and evaluated.
+  However to be able to compare your Software with another one in any type of Benchmark, you first need to run at least 2 experiments. For each experiment there will be some recorded bags etc which then will be processed, analyzed and evaluated. However, it is recommended to run at least 5 experiments, such that you should have enough data to be able to make a conclusion without having to start everything back up again.
   The resulting evaluations of each experiment you run will then be again analyzed and for all the meaningful measurements, the means, medians and standard deviations are calculated. For each meaningful measurement the [coefficient of variation](https://www.researchgate.net/post/What_do_you_consider_a_good_standard_deviation) is calculated and if this value is below 1 you get a green light to compute the final Benchmarking report. This means that you have to run at least to experiments and then start running the notebook that calculates the variation of your computed results after each new experiment. So the amount of experiments that need to be run depend on the stability of your results. As soon as you get a green light of all the important results, compute the mean of all the results over all the experiments you ran (at least two).
   With this .yaml file including all the means, you are finally ready to run the comparison/analysis of your results. This will then generate a pdf report that analysis your solution as well as compares it to the results of another Benchmark you selected(can be any Benchmark ran of the same type). Based on the final report file you get at the end you can easily tell if your Software solution did improve the overall Performance or not and where your solution is better and where it is worse.
 
@@ -253,13 +253,24 @@ ToDo: explain the results that are  given after the processing, like explain wha
     5. Navigate to the notebooks
 
 8. Result computation:
-  * First open the notebook called: `94-analyse_dashboard.ipynb` and follow the instructions there. This will result in two .yaml files, one called `BAGNAME_software_information.yaml` and the other one called `BAGNAME_eng_perf_data_all.yaml` placed within the folder `behaviour_benchmarking/data/BenchmarkXY/out`.
+    
+    In the following it is briefly explained how to achieve some actual results based on the recorded data. The first two steps have to be repeated for each experiment you ran for this Benchmark. They will extract and analyse the engineering data as well as the actual behaviour. The further steps then will help you decide weather you ran enough experiments or not and then finally let you compare your Benchmark to others.
+    Please note, that detailed explenation on what exactly is calculated and how it is analysed is explained in the notebooks directly. So if you are interested in more detail what exactly happens, please have a detailed look at them and read the comment when running them.
+    Within the final report which will be the end result, you will also fined some detailed information on what is taken into account ect.
+    There are some instructions within the notebooks, however, they are mostly designed to be ran without having to do much, so the following steps won't take long. But please read the instructions carefully.
+    If you followed the instructions above you ran at least two experiments. Please run for each experiment you have already done the first two steps before continuing.
+  * First open the notebook called: `94-analyse_dashboard.ipynb` and follow the instructions there. This will result in two .yaml files, one called `BAGNAME_software_information.yaml` and the other one called `BAGNAME_eng_perf_data_all.yaml` (ToDo add take nr to all of them) placed within the folder `behaviour_benchmarking/data/BenchmarkXY/out`.
 
       * The `software_information` file includes informations of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
           These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. This yaml file is used in the end for the final Benchmark report.
       * The `eng_perf_data_all` file on the other hand includes all kind of engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the CPU usage, the Memory usage and the NThreads used by each container. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
 
-  * Then open the notebook called `95-Trajectory-statistics` and follow the instructions there. This will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run.
+  * Then open the notebook called `95-Trajectory-statistics` and follow the instructions there. This will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run. In this file you will find all kind of results considering the actual performance of the behaviour. It will produce you a .yaml file called ´BAGNAME_results_take_XY´ that contains all the information found.
+    
+    * Now it is time to see if you have collected enough data, for this, please open and run the notebook ´97-compare_calc_mean_benchmarks´. This will open all your result yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a ´BAGNAM_final_result.yaml´ file which includes the mean values over all the experiments ran. If the standard deviation is too high, please run another experiment, complete the first two steps of the result computation and run this notebook again.
+    * The same exists for the engineering data stored in the file `eng_perf_data_all`. However, for this data we don't look at the standard deviation as during development it has been shown that this data does not change significantly over time. this means that you have to run the notebook called ´ToDo´ only once you know that you collected enough data. After running it it will produce a `eng_perf_data_all_final` file which includes the mean values of the analyzed data.
+    * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you fine a nice summary of the result, the metric used and the final results. This can in the end be converted into a PDF file showing a summery of everything.
+    If you don't have anything to compare just use the eng_perf_data_all_final_perfect and BAGNAM_final_result_perfect files which include measurements of a theoretical perfect run (not realistic in real life)
 
 ### Metrics
 Arithmetic mean:
@@ -281,6 +292,10 @@ The Benchmark is officially terminated after the 50 seconds are up. However when
 to get across 1 tile the Benchmark will be terminated early. This will be taken into account into the final Benchmark score.
 An early termination will not be considered as a failiure but will just lead to a lower score.
 
+### Test the code stability 
+You can test the stability of your code when running some experiments under some specific conditions and comparing the result to the original one. 
+For example you can cover the right white line, or the yellow middle line etc.
+
 # For distance keeping:
 interesting nodes:
 /autobot01/vehicle_avoidance_control_node/car_cmd                            171 msgs @   5.3 Hz : duckietown_msgs/Twist2DStamped  
@@ -292,6 +307,52 @@ interesting nodes:
              /autobot01/vehicle_filter_node/switch                                          3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped
 
 # Future work
-Improve the out_of_sight condition such that the Watchtowers can still see the Duckiebot but it counts as out of sight if he is on a tile which is not part of the loop for longer then 3 seconds.
-save data online automatically (not up to user)
-set up remaining Benchmarks
+    * Improve the out_of_sight condition such that the Watchtowers can still see the Duckiebot but it counts as out of sight if he is on a tile which is not part of the loop for longer then 3 seconds.
+    * Also improve the offset calculation and punish the score of the Benchmark if the Duckiebot takes for example a huge shortcut, or give a bigger punishement if he drives on the other lane for too long
+    * imporve the calculation of time needed per tile and make a difference between straight, left and right curved tiles
+    * save the data online automatically (not up to user)
+    * set up remaining Benchmarks. This should not take long at all.
+    
+# Other Benchmarks:
+    * Distance keeping:
+        Prepare two Duckiebots, one dummy and one that is used for the testing. Then set the gain of the 'dummy' Duckiebot to 0.6 and make sure the gain of the autobot is at 1.0. Place the two Duckiebots behind each other and and start lane_following on both of them. Let them drive for half a round and then increase the gain of the 'dummy' Duckiebot to 0.8. Half a round later increase the gain to 1.0.
+        During this time record the bags on both the Duckiebot and the localization system. For the Duckiebot please record the following nodes: ToDo.
+        Note that the Duckiebot used as a 'dummy' that drives infront does not need to have the acquisition bridge running. 
+        Then with the bags recorded run the notebook that analysis the engineering data, this is compatible for any kind of benchmark.
+        Within the notebook 95 add some analaysis that compares the distance between the two Duckiebots to the reference distance the Duckiebot in the back was supposed to keep. This can be done very easely by comparing the relative pose of the two Duckiebots. At the same time analyse the calculation the Duckiebot in the back has made and compare its estimated relative distance to the ground truth measured by the watchtowers.
+        Also check how well lane following is doing when having a Duckiebot in front.
+        Please note that you will have to add some lines into the lane_following.launch file to start the vehicle detection.
+        
+        As a metrics use: for the engineering data the same as for Lane Following, and for the benchmarking the mean difference between the actual distance and the reference distance, the mean difference between the estimated distance by the Duckiebot and the actual distance measured by the watchtowers.
+    * Red line detection:
+    
+    
+    * Intersection Navigation:
+    
+    
+    
+# Text for final report:
+The metrics used here to generate a score are the following (please not that in brackets the priorities are noted, H = High priority, M = Medium priority and L = low priority:
+1. Behaviour
+    * Mean distance to the middle of the lane (H)
+    * Mean heading offset compared to the reference heading (H)
+    * Mean difference between the calculated offset by the Duckiebot and the actual offset calculated by the Watchtowers. (M)
+    * Mean difference between the calculated heading error by the Duckiebot and the actual heading error calculated by the Watchtowers. (M)
+    * % crashes (number of early stops due to slow driving or crashes devided by the number of experiments ran) (H)
+    * Mean time until termination (L)
+    * Mean time needed per tile (L)
+    * 
+2. Engineering data:
+    * Mean latency (lag up to and including the detector node) (H)
+    * Mean of the update frequency of the different nodes (H)
+    * Mean of the CPU usage of the different containers (H)
+    * Mean of the Memory usage of the different containers (L)
+    * Mean of the nr of Threads of the different containers (L)
+    * Overall CPU usage (H)
+    * Overall Memory usage (M)
+    * Overall SWAP usage (M)
+
+Below you see a comparison of all the metrics and the actual result. Furthermore we plot some graphs that visualize the differences. Please note that there are more graphs then metrices mentioned above as we plot some more information which is not taken into account for the Score calculation as some of them are related to each other.
+
+Below it compares the results of both of the benchmarks and tells you which one was better considering the actual behaviour and considering the engineering data. 
+Based on the priorities shown above it tells you, which of the Benchmark performed better overall.

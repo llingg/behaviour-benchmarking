@@ -1,4 +1,8 @@
 build:
 docker build -t duckietown/post-processing:test .
 run:
-docker run --name post_processor -it --rm -e INPUT_BAG_PATH=/data/lf_day_CH_linusloop_300420_50sec_take_13 -e OUTPUT_BAG_PATH=/data/processed_lf_day_CH_linusloop_300420_50sec_take_00.bag -e ROS_MASTER_URI=http://192.168.1.78:11311 -v /home/linuslingg/bag/take13:/data duckietown/post-processing:test
+docker run --name post_processor -it --rm -e INPUT_BAG_PATH=/data/lf_day_CH_linusloop_300420_50sec_take_14 -e OUTPUT_BAG_PATH=/data/processed_lf_day_CH_linusloop_300420_50sec_take_14.bag -e ROS_MASTER_URI=http://192.168.1.97:11311 -v /home/linuslingg/bag:/data duckietown/post-processing:test
+
+
+graph_optimizer
+docker run --rm  -e  ATMSGS_BAG=/data/processed_lf_day_CH_linusloop_300420_50sec_take_14.bag -e OUTPUT_DIR=/data -e ROS_MASTER=duckietown20 -e ROS_MASTER_IP=192.168.1.97 --name graph_optimizer -v /home/linuslingg/bag:/data -e DUCKIETOWN_WORLD_FORK=llingg -e MAP_NAME=linus_loop duckietown/cslam-graphoptimizer:daffy-amd64

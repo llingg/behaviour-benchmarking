@@ -148,7 +148,7 @@ class PostProcessor():
         else:
             mode = 'w'
         #print(data)
-        with open('/data/user_test.yaml', mode=mode) as odometry_yaml:
+        with open(self.INPUT_BAG_PATH + '_db_estimation.yaml', mode=mode) as odometry_yaml:
             if not self.has_a_result_file:
                 header = ["x", "y", "z", "Q1", "Q2",
                           "Q3", "Q4"]

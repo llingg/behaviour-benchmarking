@@ -285,6 +285,12 @@ Engineering score: Update frequency, latency, cpu usage etc
 Behaviour score: offset (distance and angle), calculated d and phi compared to ground truth, distance travelled, duration of Benchmark
 
 ToDo: Spit out type of tile where Benchmark was stopped in case of an early termination
+ToDo: Make one notebook out of all where first the localization bag is analyzed, then (if there is daign toolbox info) the toolbox info is analysed (up to the moment where it crashed)
+Then the bag from the duckiebot is analyzed (also up to the time where the DB crashed), then the mean calculation and the std calculation just for the files that are available if there is only one just bring it in the right format if there are several then calc mean. For the std just use the data recorded of loc system or of DB if there is some data (do not look at diag data). 
+Then for the score check what is available and print whatever is available.
+ToDo: Final comparison works also without diagnostic toolbox data -> don't compare this stuff if it is not available -> then user must type the container version by himselfe!
+ToDo: same for the bag recorded directly on the Duckiebot
+
 
 ### Termination Criteria
 
@@ -332,6 +338,11 @@ interesting nodes:
     
     
 # Text for final report:
+
+
+
+
+
 The metrics used here to generate a score are the following (please not that in brackets the priorities are noted, H = High priority, M = Medium priority and L = low priority:
 1. Behaviour
     * Mean distance to the middle of the lane (H)
@@ -356,3 +367,5 @@ Below you see a comparison of all the metrics and the actual result. Furthermore
 
 Below it compares the results of both of the benchmarks and tells you which one was better considering the actual behaviour and considering the engineering data. 
 Based on the priorities shown above it tells you, which of the Benchmark performed better overall.
+
+

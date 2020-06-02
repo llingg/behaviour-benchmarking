@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="480" version="1.1" width="480" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style type="text/css">
+<![CDATA[
+        .sign-paper {
+            display: none;
+        }
+        g.axes, .LaneSegment {
+            display: none;
+        }
+         
+    ]]>    </style>
+  </defs>
+  <g id="base" transform="translate(120.0, 240.0) scale(120.0) scale(+1,-1)">
+    <g id="grid">
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="1" y="1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="-2"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="2" y="1"/>
+    </g>
+    <g class="axes">
+      <line stroke="red" stroke-width="0.03" x1="0" x2="0.5" y1="0" y2="0"/>
+      <line stroke="green" stroke-width="0.03" x1="0" x2="0" y1="0" y2="0.5"/>
+    </g>
+    <g id="inside">
+      <g id="tofill">
+        <g/>
+        <g class="static">
+          <g class="lane">
+            <polygon fill="#577094" fill-opacity="0.5" points="0.0,-0.15 0.10526315789473684,-0.15 0.21052631578947367,-0.15 0.3157894736842105,-0.15 0.42105263157894735,-0.15 0.5263157894736842,-0.15 0.631578947368421,-0.15 0.7368421052631579,-0.15 0.8421052631578947,-0.15 0.9473684210526315,-0.15 1.0701924438701322,-0.1529031792263381 1.2086626650602164,-0.1760097693576824 1.3414411129705412,-0.2215926656506321 1.4649059374685796,-0.28840848545101505 1.575689339803794,-0.37463466726931616 1.6707694373834567,-0.4779191855098086 1.7475526928568954,-0.5954447076010945 1.8039446590575023,-0.724005443488683 1.838407110064795,-0.8600945912356606 1.85,-1.0 2.15,-1.0 2.134315503016809,-0.810716225724474 2.087689834929208,-0.6265956125190378 2.011394822489203,-0.4526604975809081 1.9075115948654642,-0.2936553776940459 1.778873815861553,-0.1539174982743915 1.6289903889498754,-0.0372585446147046 1.4619497435266735,0.053139330959674685 1.2823083132096376,0.11481030991582927 1.0949662481996545,0.14607216861866826 0.9473684210526315,0.15 0.8421052631578947,0.15 0.7368421052631579,0.15 0.631578947368421,0.15 0.5263157894736842,0.15 0.42105263157894735,0.15 0.3157894736842105,0.15 0.21052631578947367,0.15 0.10526315789473684,0.15 0.0,0.15"/>
+            <polyline fill="none" points="0.0,0.0 0.10526315789473684,0.0 0.21052631578947367,0.0 0.3157894736842105,0.0 0.42105263157894735,0.0 0.5263157894736842,0.0 0.631578947368421,0.0 0.7368421052631579,0.0 0.8421052631578947,0.0 0.9473684210526315,0.0 1.0825793460348934,-0.0034155053038349035 1.245485489134927,-0.030599729720926564 1.4016954282486074,-0.0842266673454787 1.5469481632092275,-0.1628335150328598 1.6772815778326735,-0.2642760827718538 1.7891405161244605,-0.38578728160192727 1.8794737576730491,-0.5240526025910013 1.9458172469933552,-0.6753005280038604 1.9863613065408021,-0.8354054084800673 2.0,-1.0" stroke="#577094" stroke-dasharray="0.02" stroke-width="0.01"/>
+          </g>
+          <g class="control-point">
+            <line stroke="black" stroke-width="0.015" x1="0.0" x2="0.075" y1="0.0" y2="0.0"/>
+            <circle cx="0.0" cy="0.0" fill="white" r="0.0375" stroke="black" stroke-width="0.015"/>
+          </g>
+          <g class="control-point">
+            <line stroke="black" stroke-width="0.015" x1="1.0" x2="1.075" y1="0.0" y2="0.0"/>
+            <circle cx="1.0" cy="0.0" fill="white" r="0.0375" stroke="black" stroke-width="0.015"/>
+          </g>
+          <g class="control-point">
+            <line stroke="black" stroke-width="0.015" x1="2.0" x2="2.0" y1="-1.0" y2="-1.075"/>
+            <circle cx="2.0" cy="-1.0" fill="white" r="0.0375" stroke="black" stroke-width="0.015"/>
+          </g>
+        </g>
+        <g class="keyframe keyframe0"/>
+      </g>
+      <rect fill="none" height="4.0" id="view" stroke="black" stroke-width="0.01" width="4.0" x="-1.0" y="-2.0"/>
+    </g>
+  </g>
+</svg>

@@ -24,7 +24,21 @@ Check that no cables can interfere with the wheels of the Duckiebot. If necessar
 
 Check that all cables are properly attached. Especially check that the camera cable is plugged in correctly and locked. When the Autobot is on, a small red light appears on the camera. Note that it can sometimes appear but still the camera is badly connected.
 
+## Step 7
 
+Check that the loop is assembled according to the environment definition.
+
+## Step 8
+
+Check that the the watchtowers are placed in a way that all parts of the loop are within the field of view of at least one Watchtower.
+
+## Step 9
+
+Check that you placed enough April Tags within the map such that each Wachtower sees at least two of them. 
+
+## Step 10
+
+Make sure you added the exact April Tag position to the map .yaml file and you entered the coordinates in meters.
 
 # HW specifications
 

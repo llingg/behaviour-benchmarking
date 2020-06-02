@@ -22,30 +22,26 @@ class Ros_Analyze(DTROS):
 
     @staticmethod
     def stamp2time_decimal(stamp):
-        # print(stamp.get('secs') + stamp.get('nsecs')/1000000000.0)
-        # print(float(stamp.get('secs')))
-        # print(stamp.get('nsecs')/1000000000.0)
-
         a = float(stamp.get('secs'))
         b = stamp.get('nsecs')/1000000000.0
-        # print(a)
-        # print(b)
+
         c = (Decimal(a+b).quantize(Decimal('.000000001'), rounding=ROUND_DOWN))
 
         return c
 
     @staticmethod
-    def retrieve_latencies(bag):
+    def retrieve_latencies_lanepose_settings(bag):
+        # This function retrieves the latency from and up to the detector node, the lane_pose estimation of the duckiebot
+        # as well as the global variables that have been set
         lat = {'time': [], 'meas': []}
         set = {'gain': [], 'trim': [], 'baseline': [], 'radius': [], 'k': [], 'limit': [], 'omega_max': [], 'v_max': []}
         lane_pose = {'header': {'stamp': {'secs': [], 'nsecs': []}},'time': [],'time_rel': [], 'd': [], 'phi': [], 'd_ref': [],  'phi_ref': []}
         find_msg_re = r'^(\[LineDetectorNode\] \d+:\sLatencies:\s)'
         find_line_re = r'\s+--pub_lines--\s+\|\s+total\s+latency\s+\d+.\d+ ms\s+'
-        #find_line_set = r'\[/autobot01/kinematics_node\]\s+Initialized\s+with:\s+[gain:\s+\d+.\d+\s+trim:\s+\d+.\d+\s+baseline:\s+\d+.\d+\s+radius:\s+\d+.\d+\s+k:\s+\d+.\d+\s+limit:\s+\d+.\d+\s+omega_max:\s+\d+.\d+\s+v_max:\s+\d+.\d+]\s+'
         find_line_set = r'gain:\s'
         find_float = r'\d+\.\d+'
-        # print(type(set))
         start = True
+        
         # for _, msg, _ in bag.read_messages(topics=['/diagnostics']):
         #     temp = message_converter.convert_ros_message_to_dictionary(msg)
         #     print(temp)
@@ -101,7 +97,7 @@ class Ros_Analyze(DTROS):
 
     @staticmethod
     def retrieve_segment_count(bag):
-
+        # This function retrieves the number of segments detected at each time by the line_detector_node
         segs = {'time': [], 'meas': []}
 
         for _, msg, _ in bag.read_messages(topics=['/{}/line_detector_node/segment_list'.format(os.environ['DUCKIEBOT'])]):
@@ -114,7 +110,8 @@ class Ros_Analyze(DTROS):
 
     @staticmethod
     def retrieve_update_freq(bag):
-
+        # This function retrieves all the update frequencies, number of connections and message counted for each node 
+        # that was subscribed to
         freq = {'node': [], 'frequency': [], 'message_count': [], 'connections': []}
         dict = bag.get_type_and_topic_info().topics
 
@@ -131,26 +128,30 @@ class Ros_Analyze(DTROS):
 
         with rosbag.Bag('/data/'+os.environ['BAGNAME']+'.bag', 'r') as bag:
             segs = self.retrieve_segment_count(bag)
-            lat, set, lane_pose = self.retrieve_latencies(bag)
+            lat, set, lane_pose = self.retrieve_latencies_lanepose_settings(bag)
             freq = self.retrieve_update_freq(bag)
 
-
+        # save the node information (update freequency etc) into a .json file
         with open('/data/{}_node_info.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(freq))
-
+        
+        # save the latency information into a .json file
         with open('/data/{}_latencies.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(lat))
-
+        
+        # save the lane pose estimation of the Duckiebot into a .json file
         with open('/data/{}_lane_pose.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(lane_pose))
-
-        with open('/data/{}_constance.json'.format(os.environ['BAGNAME']), 'w') as file:
+        
+        # save the constants information into a .json file
+        with open('/data/{}_constant.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(set))
-
+        
+        # save the segment count information into a .json file
         with open('/data/{}_segment_counts.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(segs)
             file.write(json.dumps(segs))
@@ -159,6 +160,3 @@ if __name__ == '__main__':
     node = Ros_Analyze(node_name='ros_Analyze')
     node.run()
 
-
-# run command
-# dts devel build -f --arch amd64; and docker run -v /home/linuslingg/bag/:/data -e DUCKIEBOT=autobot02 -e BAGNAME=auto2test.bag -it --rm duckietown/analyze-rosbag:v1-amd64

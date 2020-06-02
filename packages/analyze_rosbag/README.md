@@ -10,9 +10,10 @@ At the moment the script is set up for all kinds of Lane Following Benchmarks. I
 - pose (offset and heading) estimation of the Duckiebot
 
 To build this package run:
-`dts devel build -f --arch amd64`
+- `dts devel build -f --arch amd64`
+
 Then run it with:
-`docker run -v path_to_bag_folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=BAGNAME -it --rm duckietown/behaviour-benchmarking:v1-amd64`
+- `docker run -v path_to_bag_folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=BAGNAME -it --rm duckietown/behaviour-benchmarking:v1-amd64`
 
 This script runs even if only rousout is recorded in the bag. 
 

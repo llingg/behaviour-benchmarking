@@ -142,7 +142,7 @@ class PostProcessor():
         return 0
 
     def save_yaml(self, odo_data):
-
+        #saves the data estimated by the Duckiebot in a yaml file. The heading direction is saved in quaternion form
         if self.has_a_result_file:
             mode = 'a+'
         else:
@@ -160,10 +160,9 @@ class PostProcessor():
 
             for pose in odo_data:
                 row = []
-                #for i in range(0, 2):
-                    # print(i)
+                
                 message = pose.get('message')
-                #print((pose[0]))
+                
                 x = message.transform.translation.x
                 row.append(str("%.8f" % x))
                 y = message.transform.translation.y

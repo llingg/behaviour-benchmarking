@@ -1,0 +1,315 @@
+<html lang='en'>
+<head></head>
+<body>
+<style>
+/*svg { background-color: #eee;}*/
+body {
+    font-family: system-ui, sans-serif;
+}
+</style>
+<fragment>
+<div id="slidecontainer">
+<div id="fixedui">
+    Select time: <input autofocus="" class="slider" id="time-range" max="0" min="0" onchange="showVal(this.value)" oninput="showVal(this.value)" type="range" value="0"/>
+<span id="time-display"><span class="keyframe keyframe0" visualize="hide">t = 0.00</span></span>
+</div>
+</div>
+<style type="text/css">
+    #slidecontainer {
+    height: 3em;
+    }
+    #time-range {
+    width: 50%;
+    }
+    #fixedui { 
+    position: fixed; 
+    width: 100%;
+    height: 3em;
+    background-color: white;
+    }
+    .keyframe[visualize="hide"] {
+        display: none;
+    }
+    .keyframe[visualize="show"] {
+        display: inherit;
+    }
+    td#obs {
+        padding: 1em;
+        vertical-align: top;
+    }
+    
+    #observation_sequence {
+        width: 320px;
+    }
+    td#obs img { width: 90%;} 
+</style>
+<script type="text/javascript">
+    function showVal(newVal) {
+        elements = document.querySelectorAll('.keyframe');
+        elements.forEach(_ => _.setAttribute('visualize', 'hide'));
+        elements_show = document.querySelectorAll('.keyframe' + newVal );  
+        elements_show.forEach(_ => _.setAttribute('visualize', 'show'));
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {
+        showVal(0);
+    });
+</script>
+<style>
+        .slidecontainer {
+        display: none;
+        }
+        </style>
+</fragment>
+<table>
+<tr>
+<td style="width: 640px; vertical-align:top;">
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="480" version="1.1" width="480" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs/>
+  <g id="base" transform="translate(240.0, 240.0) scale(240.0) scale(+1,-1)">
+    <g id="grid">
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="-1" y="0"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="-1"/>
+      <rect fill="none" height="1" stroke="#eeeeee" stroke-width="0.01" width="1" x="0" y="0"/>
+    </g>
+    <g class="axes">
+      <line stroke="red" stroke-width="0.03" x1="0" x2="0.5" y1="0" y2="0"/>
+      <line stroke="green" stroke-width="0.03" x1="0" x2="0" y1="0" y2="0.5"/>
+    </g>
+    <g id="inside">
+      <g id="tofill">
+        <g/>
+        <g class="static">
+          <g class="axes">
+            <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+            <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+          </g>
+          <g id="curve" transform="matrix(-1.8369701e-16,-1.0,1.0,-1.8369701e-16,0.0,0.0)">
+            <g class="axes">
+              <line stroke="red" stroke-width="0.01" x1="0" x2="0.1" y1="0" y2="0"/>
+              <line stroke="green" stroke-width="0.01" x1="0" x2="0" y1="0" y2="0.1"/>
+            </g>
+            <g class="LaneSegment" id="lane1" transform="matrix(1.0,0.0,-0.0,1.0,0.0,0.0)">
+              <g class="lane">
+                <polygon fill="#577094" fill-opacity="0.5" points="-0.5,-0.4079999988079071 -0.4922736064941412,-0.40803571409917816 -0.4845765518862612,-0.4087093479409054 -0.476961414866967,-0.4100162987306383 -0.4694802145466414,-0.4119476386687555 -0.46218405511215194,-0.41449017474439304 -0.45512277673341694,-0.4176265388570905 -0.4483446151044882,-0.4213353064585351 -0.4418958719448323,-0.42559114290395905 -0.4358205987116195,-0.4303649765134614 -0.43036497700272514,-0.435820592732928 -0.42559114301284195,-0.44189586439067036 -0.42133530605823527,-0.4483446060116484 -0.4176265378222839,-0.4551227661492026 -0.4144901729540901,-0.46218404309405403 -0.41194763600712747,-0.4694802011619458 -0.4100162950878084,-0.4769614001922947 -0.40870934321369967,-0.48457653600704514 -0.40803570819182977,-0.49227358950404265 -0.4079999988079071,-0.5 -0.031999998807907104,-0.5 -0.0333199446271267,-0.46122376346544347 -0.03783749841363873,-0.4226889775198565 -0.04552179995239525,-0.3846588640576579 -0.056320357669187526,-0.34739320733027235 -0.07015940646111332,-0.3111465695741862 -0.08694441158705463,-0.2761665520926531 -0.10656071443585219,-0.24269210388763426 -0.12887431576092587,-0.210951889395733 -0.153732791031053,-0.18116272647814308 -0.18116272205256204,-0.15373279137315585 -0.21095188651250457,-0.12887431562139187 -0.24269210258126384,-0.10656071394369279 -0.2761665523868745,-0.08694441087369015 -0.3111465714817995,-0.07015940565947515 -0.3473932108530567,-0.05632035691281001 -0.384658869186359,-0.045521799374503596 -0.4226889842342501,-0.037837498146238824 -0.4612237717344734,-0.03331994480010353 -0.5,-0.031999998807907104"/>
+                <polyline fill="none" points="-0.5,-0.2199999988079071 -0.4767486891143073,-0.22067782944964084 -0.45363276806025565,-0.22327342304357212 -0.430810142026663,-0.22776904905257092 -0.40843671269984905,-0.23413399779078276 -0.38666531329697573,-0.2423247902019341 -0.3656446645601457,-0.2522854748653903 -0.345518358842876,-0.26394801020111397 -0.32642387922866845,-0.27723272926267545 -0.30849166038209075,-0.29204888394330863 -0.29204888401688905,-0.30849165960553554 -0.2772327293868839,-0.3264238768932017 -0.26394801024704373,-0.34551835494964134 -0.2522854747046693,-0.36564465912092786 -0.2423247897076017,-0.3866653063341201 -0.2341339968381575,-0.40843670424610906 -0.22776904752010182,-0.4308101321249763 -0.2232734208136692,-0.45363275676345083 -0.22067782640947822,-0.47674867648474306 -0.2199999988079071,-0.5" stroke="#577094" stroke-dasharray="0.02" stroke-width="0.01"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="-0.5" x2="-0.406" y1="-0.2199999988079071" y2="-0.2199999988079071"/>
+                <circle cx="-0.5" cy="-0.2199999988079071" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="-0.30000001192092896" x2="-0.2335319756269455" y1="-0.30000001192092896" y2="-0.3664680482149124"/>
+                <circle cx="-0.30000001192092896" cy="-0.30000001192092896" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="-0.2199999988079071" x2="-0.2199999988079071" y1="-0.5" y2="-0.594"/>
+                <circle cx="-0.2199999988079071" cy="-0.5" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+            </g>
+            <g class="LaneSegment" id="lane2" transform="matrix(6.123234e-17,1.0,-1.0,6.123234e-17,0.0,0.0)">
+              <g class="lane">
+                <polygon fill="#947057" fill-opacity="0.5" points="-0.5,-0.4079999988079071 -0.4256034678044542,-0.4036355145817748 -0.3518214537597607,-0.39314232017817696 -0.27915796386385744,-0.37659209475883604 -0.20810936346015219,-0.35409789315136264 -0.13916098655873133,-0.3258133735701031 -0.07278382051276383,-0.2919317479746699 -0.009431288697125562,-0.2526844622362704 0.050463846833188775,-0.20833961512763427 0.10649244154688078,-0.15920012693644645 0.15920012739182576,-0.10649243674154137 0.20833961528039224,-0.05046384279827111 0.25268446215106155,0.00943129193926244 0.2919317477177745,0.0727838229451765 0.32581337320897374,0.1391609881700076 0.3540978927541646,0.20810936424448936 0.37659209439398034,0.2791579638211011 0.39314231991385407,0.3518214528954067 0.4036355144854884,0.4256034661296107 0.4079999988079071,0.5 0.031999998807907104,0.5 0.028919750920785386,0.4566532921682099 0.022270475113793126,0.41370901138259536 0.01209759925856721,0.3714604999557379 -0.0015293855837753834,0.33019635807616277 -0.01851739328400301,0.2901984616898755 -0.0387503785174548,0.25174003700172604 -0.06209012947132152,0.2150837940632766 -0.08837721197152387,0.18048013219666625 -0.11743205857984634,0.14816542951324357 -0.14816543511217664,0.11743205820385913 -0.18048013859913897,0.08837721215493288 -0.21508380122034992,0.06209013027857199 -0.2517400448593063,0.038750380008730434 -0.29019847018908373,0.018517395514814794 -0.3301963671537369,0.0015293886045828486 -0.37146050954446547,-0.012097595402701361 -0.4137090214117718,-0.02227047038351035 -0.456653302564122,-0.02891974528270022 -0.5,-0.031999998807907104"/>
+                <polyline fill="none" points="-0.5,-0.2199999988079071 -0.4411283851842881,-0.21627762993223754 -0.38276523758576625,-0.20770639528084364 -0.32530923670416145,-0.19434484508076869 -0.26915286530694454,-0.1762842522733899 -0.21467972837390753,-0.15364798902764415 -0.16226193268603506,-0.12659068398296974 -0.11225754495873774,-0.09529716597884919 -0.0650081458829751,-0.059981201486350694 -0.02083649678264793,-0.020884034366293658 0.020884034405989717,0.020836496385851097 0.059981201654434185,0.06500814469919756 0.09529716633987002,0.11225754300126951 0.12659068460015985,0.16226192997345126 0.15364798996248538,0.21467972492994156 0.1762842535851946,0.26915286116032605 0.1943448468262738,0.3253092318884195 0.20770639751382358,0.38276523213900104 0.2162776327031369,0.4411283791489103 0.2199999988079071,0.5" stroke="#947057" stroke-dasharray="0.02" stroke-width="0.01"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="-0.5" x2="-0.406" y1="-0.2199999988079071" y2="-0.2199999988079071"/>
+                <circle cx="-0.5" cy="-0.2199999988079071" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="0.0" x2="0.06646803629398346" y1="0.0" y2="0.06646803629398346"/>
+                <circle cx="0.0" cy="0.0" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+              <g class="control-point">
+                <line stroke="black" stroke-width="0.0188" x1="0.2199999988079071" x2="0.2199999988079071" y1="0.5" y2="0.594"/>
+                <circle cx="0.2199999988079071" cy="0.5" fill="white" r="0.047" stroke="black" stroke-width="0.0188"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g class="keyframe keyframe0"/>
+      </g>
+      <rect fill="none" height="2.0" id="view" stroke="black" stroke-width="0.01" width="2.0" x="-1.0" y="-1.0"/>
+    </g>
+  </g>
+</svg>
+
+</td>
+<td id="obs" >
+            <style>
+            *[visualize_parts=false] {
+                display: none;
+            }
+            </style>
+        
+            <p>
+            <input id='checkbox-static' type="checkbox"  onclick="hideshow(this);" checked>static data</input>
+            <input id='checkbox-textures' type="checkbox"  onclick="hideshow(this);" checked>textures</input>
+            <input id='checkbox-axes' type="checkbox"  onclick="hideshow(this);">axes</input>
+            <br/>
+            <input id='checkbox-lane_segments' type="checkbox"  onclick="hideshow(this);">map lane segments</input>
+            (<input id='checkbox-lane_segments-control_points' type="checkbox"  onclick="hideshow(this);">control 
+            points</input>)</p>
+            </p>
+           
+            
+            <p>
+            <input id='checkbox-vehicles' type="checkbox"  onclick="hideshow(this);" checked>vehicles</input>
+            <input id='checkbox-duckies' type="checkbox"  onclick="hideshow(this);" checked>duckies</input>
+            <input id='checkbox-signs' type="checkbox"  onclick="hideshow(this);" checked>signs</input>
+            <input id='checkbox-sign-papers' type="checkbox"  onclick="hideshow(this);" checked>signs textures</input>
+            <input id='checkbox-decorations' type="checkbox"  onclick="hideshow(this);" checked>decorations</input>
+          
+            </p>
+             <p>
+            <input id='checkbox-current_lane' type="checkbox"  onclick="hideshow(this);">current lane</input>
+            <input id='checkbox-anchors' type="checkbox"  onclick="hideshow(this);">anchor point</input>
+            </p>
+            <script>
+                var checkboxValues = null; 
+                name2selector = {
+                    "checkbox-static": "g.static",
+                    "checkbox-textures": "g.static .tile-textures",
+                    "checkbox-axes": "g.axes",
+                    "checkbox-lane_segments": "g.static .LaneSegment",
+                    "checkbox-lane_segments-control_points": " .control-point",
+                    "checkbox-current_lane": "g.keyframe .LaneSegment",
+                    "checkbox-duckies": ".Duckie",
+                    "checkbox-signs": ".Sign",
+                    "checkbox-sign-papers": ".Sign .sign-paper",
+                    "checkbox-vehicles": ".Vehicle",
+                    "checkbox-decorations": ".Decoration",
+                    'checkbox-anchors': '.Anchor',
+                };
+                function hideshow(element) {
+                    console.log(element);
+                    element_name = element.id;
+                    console.log(element_name);
+                    selector = name2selector[element_name];
+                    checked = element.checked;
+                    console.log(selector);
+                    console.log(checked);
+                    elements = document.querySelectorAll(selector);
+                    elements.forEach(_ => _.setAttribute('visualize_parts', checked));
+                    checkboxValues[element_name] = checked;
+                    try {
+                        localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+                    } catch (error) {
+                        console.log('cannot save preferences.');
+                        console.log(error);
+                    }
+                }
+                
+                function init() {
+                    for(var name in name2selector) {
+                        console.log(name);
+                        element = document.getElementById(name);
+                        if(name in checkboxValues) {
+                            element.checked = checkboxValues[name];
+                        }
+                        
+                        hideshow(element);
+                    } 
+                }
+                
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    init();     
+                });
+                
+                try {
+                    checkboxValues =  JSON.parse(localStorage.getItem('checkboxValues')) || {};
+                
+                } catch (error) {
+                    console.log('cannot load preferences.');
+                    console.log(error);
+                    checkboxValues = {}
+                }
+                
+                init();
+                console.log(checkboxValues);
+            </script>
+        
+<div id="observation_sequence">
+<div></div>
+</div>
+</td>
+</tr>
+</table>
+
+<script type='text/javascript'>
+    showVal(0); 
+</script>
+
+<div id="tabs"><style>/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    
+    font-size: 80%;
+    background-color: inherit;
+    float: left;
+    border: solid 0.5px gray;
+    outline: none;
+    cursor: pointer;
+    /* padding: 14px 16px;*/
+    transition: 0.3s;
+}
+
+.tab button + button {
+    margin-left: 10px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    /*display: none;*/
+    opacity: 0;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    width: 100%;
+}
+    
+    </style><script>
+function open_tab(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    document.getElementById(cityName).style.opacity = 1.0;
+    evt.currentTarget.className += " active";
+} 
+    
+    </script><div class="tab"></div><div></div></div>
+
+</body>
+</html>
+    

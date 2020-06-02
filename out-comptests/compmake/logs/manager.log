@@ -1,0 +1,872 @@
+add_targets()
+ -         targets: ['_dynreports_create_index', 'duckietown_world_tests-_dynreports_getres']
+computed todo
+ -       not_ready: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests']
+ -      ready_todo: ['duckietown_world_tests-context']
+ -    targets_done: []
+ - targets_todo_plus_deps: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+targets_todo_plus_deps: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+add_targets():adding to todo
+ -            todo: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests']
+ -        todo_add: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests']
+add_targets():adding to ready
+ -           ready: []
+ -       ready_add: ['duckietown_world_tests-context']
+after add_targets()
+ -            done: []
+ -      processing: []
+ -      ready_todo: ['duckietown_world_tests-context']
+ -            todo: ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests']
+0: -  all_targets: 6
+0: -      blocked: 0
+0: -      deleted: 0
+0: -         done: 0
+0: -       failed: 0
+0: -   processing: 0
+0: -        ready: 1
+0: -         todo: 5
+0: 
+0:  In more details:
+0: -  all_targets: 6 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+0: -      blocked: -
+0: -      deleted: -
+0: -         done: -
+0: -       failed: -
+0: -   processing: -
+0: -        ready: 1 ['duckietown_world_tests-context']
+0: -         todo: 5 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests']
+chosen next_job
+ -          job_id: duckietown_world_tests-context
+start_job
+ -          job_id: duckietown_world_tests-context
+check_job_finished
+ -          job_id: duckietown_world_tests-context
+job_succeeded
+ -          job_id: duckietown_world_tests-context
+considering parents
+ -    parents_todo: ['duckietown_world_tests-comptests']
+considering opportuniny
+ -          job_id: duckietown_world_tests-context
+ -     opportunity: duckietown_world_tests-comptests
+parent is ready
+ -     opportunity: duckietown_world_tests-comptests
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-context
+ -        new_jobs: []
+ - user_object_deps: []
+1: -  all_targets: 6
+1: -      blocked: 0
+1: -      deleted: 0
+1: -         done: 1
+1: -       failed: 0
+1: -   processing: 0
+1: -        ready: 1
+1: -         todo: 4
+1: 
+1:  In more details:
+1: -  all_targets: 6 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+1: -      blocked: -
+1: -      deleted: -
+1: -         done: 1 ['duckietown_world_tests-context']
+1: -       failed: -
+1: -   processing: -
+1: -        ready: 1 ['duckietown_world_tests-comptests']
+1: -         todo: 4 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres']
+chosen next_job
+ -          job_id: duckietown_world_tests-comptests
+start_job
+ -          job_id: duckietown_world_tests-comptests
+check_job_finished
+ -          job_id: duckietown_world_tests-comptests
+job_succeeded
+ -          job_id: duckietown_world_tests-comptests
+considering parents
+ -    parents_todo: ['duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres']
+considering opportuniny
+ -          job_id: duckietown_world_tests-comptests
+ -     opportunity: duckietown_world_tests-_dynreports_getres
+parent is ready
+ -     opportunity: duckietown_world_tests-_dynreports_getres
+considering opportuniny
+ -          job_id: duckietown_world_tests-comptests
+ -     opportunity: duckietown_world_tests-_dynreports_getbra
+parent is ready
+ -     opportunity: duckietown_world_tests-_dynreports_getbra
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-comptests
+ -        new_jobs: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+ - user_object_deps: []
+add_targets()
+ -         targets: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+computed todo
+ -       not_ready: []
+ -      ready_todo: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+ -    targets_done: []
+ - targets_todo_plus_deps: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+targets_todo_plus_deps: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+add_targets():adding to todo
+ -            todo: ['_dynreports_create_index', '_dynreports_merge']
+ -        todo_add: []
+add_targets():adding to ready
+ -           ready: ['duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres']
+ -       ready_add: ['duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+after add_targets()
+ -            done: ['duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+ -      processing: []
+ -      ready_todo: ['duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+ -            todo: ['_dynreports_create_index', '_dynreports_merge']
+2: -  all_targets: 25
+2: -      blocked: 0
+2: -      deleted: 0
+2: -         done: 2
+2: -       failed: 0
+2: -   processing: 0
+2: -        ready: 21
+2: -         todo: 2
+2: 
+2:  In more details:
+2: -      blocked: -
+2: -      deleted: -
+2: -         done: 2 ['duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+2: -       failed: -
+2: -   processing: -
+2: -         todo: 2 ['_dynreports_create_index', '_dynreports_merge']
+chosen next_job
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+start_job
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+check_job_finished
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+job_succeeded
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+considering parents
+ -    parents_todo: ['_dynreports_merge']
+considering opportuniny
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+ -     opportunity: _dynreports_merge
+parent is ready
+ -     opportunity: _dynreports_merge
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-_dynreports_getbra
+ -        new_jobs: []
+ - user_object_deps: []
+3: -  all_targets: 25
+3: -      blocked: 0
+3: -      deleted: 0
+3: -         done: 3
+3: -       failed: 0
+3: -   processing: 0
+3: -        ready: 21
+3: -         todo: 1
+3: 
+3:  In more details:
+3: -      blocked: -
+3: -      deleted: -
+3: -         done: 3 ['duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+3: -       failed: -
+3: -   processing: -
+3: -         todo: 1 ['_dynreports_create_index']
+chosen next_job
+ -          job_id: _dynreports_merge
+start_job
+ -          job_id: _dynreports_merge
+check_job_finished
+ -          job_id: _dynreports_merge
+job_succeeded
+ -          job_id: _dynreports_merge
+considering parents
+ -    parents_todo: ['_dynreports_create_index']
+considering opportuniny
+ -          job_id: _dynreports_merge
+ -     opportunity: _dynreports_create_index
+parent is ready
+ -     opportunity: _dynreports_create_index
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: _dynreports_merge
+ -        new_jobs: []
+ - user_object_deps: []
+4: -  all_targets: 25
+4: -      blocked: 0
+4: -      deleted: 0
+4: -         done: 4
+4: -       failed: 0
+4: -   processing: 0
+4: -        ready: 21
+4: -         todo: 0
+4: 
+4:  In more details:
+4: -      blocked: -
+4: -      deleted: -
+4: -         done: 4 ['_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+4: -       failed: -
+4: -   processing: -
+4: -         todo: -
+chosen next_job
+ -          job_id: _dynreports_create_index
+start_job
+ -          job_id: _dynreports_create_index
+check_job_finished
+ -          job_id: _dynreports_create_index
+job_succeeded
+ -          job_id: _dynreports_create_index
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: _dynreports_create_index
+ -        new_jobs: []
+ - user_object_deps: []
+5: -  all_targets: 25
+5: -      blocked: 0
+5: -      deleted: 0
+5: -         done: 5
+5: -       failed: 0
+5: -   processing: 0
+5: -        ready: 20
+5: -         todo: 0
+5: 
+5:  In more details:
+5: -      blocked: -
+5: -      deleted: -
+5: -         done: 5 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context']
+5: -       failed: -
+5: -   processing: -
+5: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-svg1
+start_job
+ -          job_id: duckietown_world_tests-svg1
+check_job_finished
+ -          job_id: duckietown_world_tests-svg1
+job_succeeded
+ -          job_id: duckietown_world_tests-svg1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-svg1
+ -        new_jobs: []
+ - user_object_deps: []
+6: -  all_targets: 25
+6: -      blocked: 0
+6: -      deleted: 0
+6: -         done: 6
+6: -       failed: 0
+6: -   processing: 0
+6: -        ready: 19
+6: -         todo: 0
+6: 
+6:  In more details:
+6: -      blocked: -
+6: -      deleted: -
+6: -         done: 6 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-svg1']
+6: -       failed: -
+6: -   processing: -
+6: -        ready: 19 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+6: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-dd_test
+start_job
+ -          job_id: duckietown_world_tests-dd_test
+check_job_finished
+ -          job_id: duckietown_world_tests-dd_test
+job_succeeded
+ -          job_id: duckietown_world_tests-dd_test
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-dd_test
+ -        new_jobs: []
+ - user_object_deps: []
+7: -  all_targets: 25
+7: -      blocked: 0
+7: -      deleted: 0
+7: -         done: 7
+7: -       failed: 0
+7: -   processing: 0
+7: -        ready: 18
+7: -         todo: 0
+7: 
+7:  In more details:
+7: -      blocked: -
+7: -      deleted: -
+7: -         done: 7 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-svg1']
+7: -       failed: -
+7: -   processing: -
+7: -        ready: 18 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+7: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-sb1
+start_job
+ -          job_id: duckietown_world_tests-sb1
+check_job_finished
+ -          job_id: duckietown_world_tests-sb1
+job_succeeded
+ -          job_id: duckietown_world_tests-sb1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-sb1
+ -        new_jobs: []
+ - user_object_deps: []
+8: -  all_targets: 25
+8: -      blocked: 0
+8: -      deleted: 0
+8: -         done: 8
+8: -       failed: 0
+8: -   processing: 0
+8: -        ready: 17
+8: -         todo: 0
+8: 
+8:  In more details:
+8: -      blocked: -
+8: -      deleted: -
+8: -         done: 8 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+8: -       failed: -
+8: -   processing: -
+8: -        ready: 17 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+8: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-lane_pose3
+start_job
+ -          job_id: duckietown_world_tests-lane_pose3
+check_job_finished
+ -          job_id: duckietown_world_tests-lane_pose3
+job_succeeded
+ -          job_id: duckietown_world_tests-lane_pose3
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-lane_pose3
+ -        new_jobs: []
+ - user_object_deps: []
+9: -  all_targets: 25
+9: -      blocked: 0
+9: -      deleted: 0
+9: -         done: 9
+9: -       failed: 0
+9: -   processing: 0
+9: -        ready: 16
+9: -         todo: 0
+9: 
+9:  In more details:
+9: -      blocked: -
+9: -      deleted: -
+9: -         done: 9 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+9: -       failed: -
+9: -   processing: -
+9: -        ready: 16 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+9: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-integrator2D_test1
+start_job
+ -          job_id: duckietown_world_tests-integrator2D_test1
+check_job_finished
+ -          job_id: duckietown_world_tests-integrator2D_test1
+job_succeeded
+ -          job_id: duckietown_world_tests-integrator2D_test1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-integrator2D_test1
+ -        new_jobs: []
+ - user_object_deps: []
+10: -  all_targets: 25
+10: -      blocked: 0
+10: -      deleted: 0
+10: -         done: 10
+10: -       failed: 0
+10: -   processing: 0
+10: -        ready: 15
+10: -         todo: 0
+10: 
+10:  In more details:
+10: -      blocked: -
+10: -      deleted: -
+10: -         done: 10 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+10: -       failed: -
+10: -   processing: -
+10: -        ready: 15 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+10: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-m1
+start_job
+ -          job_id: duckietown_world_tests-m1
+check_job_finished
+ -          job_id: duckietown_world_tests-m1
+job_succeeded
+ -          job_id: duckietown_world_tests-m1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-m1
+ -        new_jobs: []
+ - user_object_deps: []
+11: -  all_targets: 25
+11: -      blocked: 0
+11: -      deleted: 0
+11: -         done: 11
+11: -       failed: 0
+11: -   processing: 0
+11: -        ready: 14
+11: -         todo: 0
+11: 
+11:  In more details:
+11: -      blocked: -
+11: -      deleted: -
+11: -         done: 11 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+11: -       failed: -
+11: -   processing: -
+11: -        ready: 14 ['duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+11: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-_dynreports_getres
+start_job
+ -          job_id: duckietown_world_tests-_dynreports_getres
+check_job_finished
+ -          job_id: duckietown_world_tests-_dynreports_getres
+job_succeeded
+ -          job_id: duckietown_world_tests-_dynreports_getres
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-_dynreports_getres
+ -        new_jobs: []
+ - user_object_deps: []
+12: -  all_targets: 25
+12: -      blocked: 0
+12: -      deleted: 0
+12: -         done: 12
+12: -       failed: 0
+12: -   processing: 0
+12: -        ready: 13
+12: -         todo: 0
+12: 
+12:  In more details:
+12: -      blocked: -
+12: -      deleted: -
+12: -         done: 12 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+12: -       failed: -
+12: -   processing: -
+12: -        ready: 13 ['duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+12: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-lane_pose4
+start_job
+ -          job_id: duckietown_world_tests-lane_pose4
+check_job_finished
+ -          job_id: duckietown_world_tests-lane_pose4
+job_succeeded
+ -          job_id: duckietown_world_tests-lane_pose4
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-lane_pose4
+ -        new_jobs: []
+ - user_object_deps: []
+13: -  all_targets: 25
+13: -      blocked: 0
+13: -      deleted: 0
+13: -         done: 13
+13: -       failed: 0
+13: -   processing: 0
+13: -        ready: 12
+13: -         todo: 0
+13: 
+13:  In more details:
+13: -      blocked: -
+13: -      deleted: -
+13: -         done: 13 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1']
+13: -       failed: -
+13: -   processing: -
+13: -        ready: 12 ['duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+13: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-test_pwm1
+start_job
+ -          job_id: duckietown_world_tests-test_pwm1
+check_job_finished
+ -          job_id: duckietown_world_tests-test_pwm1
+job_succeeded
+ -          job_id: duckietown_world_tests-test_pwm1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-test_pwm1
+ -        new_jobs: []
+ - user_object_deps: []
+14: -  all_targets: 25
+14: -      blocked: 0
+14: -      deleted: 0
+14: -         done: 14
+14: -       failed: 0
+14: -   processing: 0
+14: -        ready: 11
+14: -         todo: 0
+14: 
+14:  In more details:
+14: -      blocked: -
+14: -      deleted: -
+14: -         done: 14 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-test_pwm1']
+14: -       failed: -
+14: -   processing: -
+14: -        ready: 11 ['duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-svg2', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+14: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-svg2
+start_job
+ -          job_id: duckietown_world_tests-svg2
+check_job_finished
+ -          job_id: duckietown_world_tests-svg2
+job_succeeded
+ -          job_id: duckietown_world_tests-svg2
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-svg2
+ -        new_jobs: []
+ - user_object_deps: []
+15: -  all_targets: 25
+15: -      blocked: 0
+15: -      deleted: 0
+15: -         done: 15
+15: -       failed: 0
+15: -   processing: 0
+15: -        ready: 10
+15: -         todo: 0
+15: 
+15:  In more details:
+15: -      blocked: -
+15: -      deleted: -
+15: -         done: 15 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-test_pwm1']
+15: -       failed: -
+15: -   processing: -
+15: -        ready: 10 ['duckietown_world_tests-center_point1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+15: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-kinematics2d_test
+start_job
+ -          job_id: duckietown_world_tests-kinematics2d_test
+check_job_finished
+ -          job_id: duckietown_world_tests-kinematics2d_test
+job_succeeded
+ -          job_id: duckietown_world_tests-kinematics2d_test
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-kinematics2d_test
+ -        new_jobs: []
+ - user_object_deps: []
+16: -  all_targets: 25
+16: -      blocked: 0
+16: -      deleted: 0
+16: -         done: 16
+16: -       failed: 0
+16: -   processing: 0
+16: -        ready: 9
+16: -         todo: 0
+16: 
+16:  In more details:
+16: -      blocked: -
+16: -      deleted: -
+16: -         done: 16 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-test_pwm1']
+16: -       failed: -
+16: -   processing: -
+16: -        ready: 9 ['duckietown_world_tests-center_point1', 'duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+16: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-center_point1
+start_job
+ -          job_id: duckietown_world_tests-center_point1
+check_job_finished
+ -          job_id: duckietown_world_tests-center_point1
+job_succeeded
+ -          job_id: duckietown_world_tests-center_point1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-center_point1
+ -        new_jobs: []
+ - user_object_deps: []
+17: -  all_targets: 25
+17: -      blocked: 0
+17: -      deleted: 0
+17: -         done: 17
+17: -       failed: 0
+17: -   processing: 0
+17: -        ready: 8
+17: -         todo: 0
+17: 
+17:  In more details:
+17: -      blocked: -
+17: -      deleted: -
+17: -         done: 17 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-test_pwm1']
+17: -       failed: -
+17: -   processing: -
+17: -        ready: 8 ['duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1', 'duckietown_world_tests-wb2']
+17: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-wb2
+start_job
+ -          job_id: duckietown_world_tests-wb2
+check_job_finished
+ -          job_id: duckietown_world_tests-wb2
+job_succeeded
+ -          job_id: duckietown_world_tests-wb2
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-wb2
+ -        new_jobs: []
+ - user_object_deps: []
+18: -  all_targets: 25
+18: -      blocked: 0
+18: -      deleted: 0
+18: -         done: 18
+18: -       failed: 0
+18: -   processing: 0
+18: -        ready: 7
+18: -         todo: 0
+18: 
+18:  In more details:
+18: -      blocked: -
+18: -      deleted: -
+18: -         done: 18 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb2']
+18: -       failed: -
+18: -   processing: -
+18: -        ready: 7 ['duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1']
+18: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-lane_pose_test1-2
+start_job
+ -          job_id: duckietown_world_tests-lane_pose_test1-2
+check_job_finished
+ -          job_id: duckietown_world_tests-lane_pose_test1-2
+job_succeeded
+ -          job_id: duckietown_world_tests-lane_pose_test1-2
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-lane_pose_test1-2
+ -        new_jobs: []
+ - user_object_deps: []
+19: -  all_targets: 25
+19: -      blocked: 0
+19: -      deleted: 0
+19: -         done: 19
+19: -       failed: 0
+19: -   processing: 0
+19: -        ready: 6
+19: -         todo: 0
+19: 
+19:  In more details:
+19: -      blocked: -
+19: -      deleted: -
+19: -         done: 19 ['_dynreports_create_index', '_dynreports_merge', 'duckietown_world_tests-_dynreports_getbra', 'duckietown_world_tests-_dynreports_getres', 'duckietown_world_tests-center_point1', 'duckietown_world_tests-comptests', 'duckietown_world_tests-context', 'duckietown_world_tests-dd_test', 'duckietown_world_tests-integrator2D_test1', 'duckietown_world_tests-kinematics2d_test', 'duckietown_world_tests-lane_pose3', 'duckietown_world_tests-lane_pose4', 'duckietown_world_tests-lane_pose_test1-2', 'duckietown_world_tests-m1', 'duckietown_world_tests-sb1', 'duckietown_world_tests-svg1', 'duckietown_world_tests-svg2', 'duckietown_world_tests-test_pwm1', 'duckietown_world_tests-wb2']
+19: -       failed: -
+19: -   processing: -
+19: -        ready: 6 ['duckietown_world_tests-lane_pose2', 'duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1']
+19: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-lane_pose2
+start_job
+ -          job_id: duckietown_world_tests-lane_pose2
+check_job_finished
+ -          job_id: duckietown_world_tests-lane_pose2
+job_succeeded
+ -          job_id: duckietown_world_tests-lane_pose2
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-lane_pose2
+ -        new_jobs: []
+ - user_object_deps: []
+20: -  all_targets: 25
+20: -      blocked: 0
+20: -      deleted: 0
+20: -         done: 20
+20: -       failed: 0
+20: -   processing: 0
+20: -        ready: 5
+20: -         todo: 0
+20: 
+20:  In more details:
+20: -      blocked: -
+20: -      deleted: -
+20: -       failed: -
+20: -   processing: -
+20: -        ready: 5 ['duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-test_pose_sampling_1', 'duckietown_world_tests-wb1']
+20: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-test_pose_sampling_1
+start_job
+ -          job_id: duckietown_world_tests-test_pose_sampling_1
+check_job_finished
+ -          job_id: duckietown_world_tests-test_pose_sampling_1
+job_succeeded
+ -          job_id: duckietown_world_tests-test_pose_sampling_1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-test_pose_sampling_1
+ -        new_jobs: []
+ - user_object_deps: []
+21: -  all_targets: 25
+21: -      blocked: 0
+21: -      deleted: 0
+21: -         done: 21
+21: -       failed: 0
+21: -   processing: 0
+21: -        ready: 4
+21: -         todo: 0
+21: 
+21:  In more details:
+21: -      blocked: -
+21: -      deleted: -
+21: -       failed: -
+21: -   processing: -
+21: -        ready: 4 ['duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-maps', 'duckietown_world_tests-tag_positions', 'duckietown_world_tests-wb1']
+21: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-tag_positions
+start_job
+ -          job_id: duckietown_world_tests-tag_positions
+check_job_finished
+ -          job_id: duckietown_world_tests-tag_positions
+job_succeeded
+ -          job_id: duckietown_world_tests-tag_positions
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-tag_positions
+ -        new_jobs: []
+ - user_object_deps: []
+22: -  all_targets: 25
+22: -      blocked: 0
+22: -      deleted: 0
+22: -         done: 22
+22: -       failed: 0
+22: -   processing: 0
+22: -        ready: 3
+22: -         todo: 0
+22: 
+22:  In more details:
+22: -      blocked: -
+22: -      deleted: -
+22: -       failed: -
+22: -   processing: -
+22: -        ready: 3 ['duckietown_world_tests-lane_pose_test1', 'duckietown_world_tests-maps', 'duckietown_world_tests-wb1']
+22: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-lane_pose_test1
+start_job
+ -          job_id: duckietown_world_tests-lane_pose_test1
+check_job_finished
+ -          job_id: duckietown_world_tests-lane_pose_test1
+job_succeeded
+ -          job_id: duckietown_world_tests-lane_pose_test1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-lane_pose_test1
+ -        new_jobs: []
+ - user_object_deps: []
+23: -  all_targets: 25
+23: -      blocked: 0
+23: -      deleted: 0
+23: -         done: 23
+23: -       failed: 0
+23: -   processing: 0
+23: -        ready: 2
+23: -         todo: 0
+23: 
+23:  In more details:
+23: -      blocked: -
+23: -      deleted: -
+23: -       failed: -
+23: -   processing: -
+23: -        ready: 2 ['duckietown_world_tests-maps', 'duckietown_world_tests-wb1']
+23: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-wb1
+start_job
+ -          job_id: duckietown_world_tests-wb1
+check_job_finished
+ -          job_id: duckietown_world_tests-wb1
+job_succeeded
+ -          job_id: duckietown_world_tests-wb1
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-wb1
+ -        new_jobs: []
+ - user_object_deps: []
+24: -  all_targets: 25
+24: -      blocked: 0
+24: -      deleted: 0
+24: -         done: 24
+24: -       failed: 0
+24: -   processing: 0
+24: -        ready: 1
+24: -         todo: 0
+24: 
+24:  In more details:
+24: -      blocked: -
+24: -      deleted: -
+24: -       failed: -
+24: -   processing: -
+24: -        ready: 1 ['duckietown_world_tests-maps']
+24: -         todo: -
+chosen next_job
+ -          job_id: duckietown_world_tests-maps
+start_job
+ -          job_id: duckietown_world_tests-maps
+check_job_finished
+ -          job_id: duckietown_world_tests-maps
+job_succeeded
+ -          job_id: duckietown_world_tests-maps
+considering parents
+ -    parents_todo: []
+check_job_finished_handle_result
+ -    deleted_jobs: []
+ -          job_id: duckietown_world_tests-maps
+ -        new_jobs: []
+ - user_object_deps: []
+ending: -  all_targets: 25
+ending: -      blocked: 0
+ending: -      deleted: 0
+ending: -         done: 25
+ending: -       failed: 0
+ending: -   processing: 0
+ending: -        ready: 0
+ending: -         todo: 0
+ending: 
+ending:  In more details:
+ending: -      blocked: -
+ending: -      deleted: -
+ending: -       failed: -
+ending: -   processing: -
+ending: -        ready: -
+ending: -         todo: -

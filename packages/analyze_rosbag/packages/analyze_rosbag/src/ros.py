@@ -41,11 +41,12 @@ class Ros_Analyze(DTROS):
         find_line_set = r'gain:\s'
         find_float = r'\d+\.\d+'
         start = True
-        
+
         # for _, msg, _ in bag.read_messages(topics=['/diagnostics']):
         #     temp = message_converter.convert_ros_message_to_dictionary(msg)
         #     print(temp)
 
+        #in case the Duckiebot is running on daffy
         for _, msg, _ in bag.read_messages(topics=['/autobot01/lane_filter_node/lane_pose']):
             temp = message_converter.convert_ros_message_to_dictionary(msg)
 
@@ -65,7 +66,25 @@ class Ros_Analyze(DTROS):
             time = Ros_Analyze.stamp2time_decimal(temp.get('header').get('stamp'))
             lane_pose['time_rel'].append(float(time-start_time))
 
+        #in case the Duckiebot is running on Master19
+        for _, msg, _ in bag.read_messages(topics=['/autobot01/lane_controller_node/lane_pose']):
+            temp = message_converter.convert_ros_message_to_dictionary(msg)
 
+            if start:
+                start_time = Ros_Analyze.stamp2time_decimal(temp.get('header').get('stamp'))
+                start = False
+                lane_pose['header']['stamp']['secs'] = temp.get('header').get('stamp').get('secs')
+                lane_pose['header']['stamp']['nsecs'] = temp.get('header').get('stamp').get('nsecs')
+
+            time = Ros_Analyze.stamp2time(temp.get('header').get('stamp'))
+
+            lane_pose['d'].append(temp['d'])
+            lane_pose['phi'].append(temp['phi'])
+            lane_pose['phi_ref'].append(temp['phi_ref'])
+            lane_pose['d_ref'].append(temp['d_ref'])
+            lane_pose['time'].append((time))
+            time = Ros_Analyze.stamp2time_decimal(temp.get('header').get('stamp'))
+            lane_pose['time_rel'].append(float(time-start_time))
 
         for _, msg, _ in bag.read_messages(topics=['/rosout']):
             temp = message_converter.convert_ros_message_to_dictionary(msg)
@@ -110,7 +129,7 @@ class Ros_Analyze(DTROS):
 
     @staticmethod
     def retrieve_update_freq(bag):
-        # This function retrieves all the update frequencies, number of connections and message counted for each node 
+        # This function retrieves all the update frequencies, number of connections and message counted for each node
         # that was subscribed to
         freq = {'node': [], 'frequency': [], 'message_count': [], 'connections': []}
         dict = bag.get_type_and_topic_info().topics
@@ -135,22 +154,22 @@ class Ros_Analyze(DTROS):
         with open('/data/{}_node_info.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(freq))
-        
+
         # save the latency information into a .json file
         with open('/data/{}_latencies.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(lat))
-        
+
         # save the lane pose estimation of the Duckiebot into a .json file
         with open('/data/{}_lane_pose.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(lane_pose))
-        
+
         # save the constants information into a .json file
         with open('/data/{}_constant.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(lat)
             file.write(json.dumps(set))
-        
+
         # save the segment count information into a .json file
         with open('/data/{}_segment_counts.json'.format(os.environ['BAGNAME']), 'w') as file:
             #print(segs)
@@ -159,4 +178,3 @@ class Ros_Analyze(DTROS):
 if __name__ == '__main__':
     node = Ros_Analyze(node_name='ros_Analyze')
     node.run()
-

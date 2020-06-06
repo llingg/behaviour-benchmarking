@@ -279,6 +279,11 @@ $$\bar{x}=\frac{1}{n} \sum_{i=1}^n x_i $$
 Standard deviation:
 $$s=\sqrt{\frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2}$$
 
+coefficient of variation:
+CV = std/mean*100 [%]
+A CV in the range of 20% normally stands for an acceptable standard deviation, this means that the std deviation compared to the mean does not very too much
+However in this Benchmarking, the purpose of looking at the CV factor is only to be sure that the experiment recorded was not a lucky or unlucky run, therefor, a CV below 100% is already acceptable
+
 Note: the localization system that measures the ground truth, measures the position of the Apriltag placed on the localization standoff of your Duckiebot. This means that if this Apriltag is not placed very accurately, your results will be false.
 
 Engineering score: Update frequency, latency, cpu usage etc
@@ -317,6 +322,7 @@ interesting nodes:
     * Also improve the offset calculation and punish the score of the Benchmark if the Duckiebot takes for example a huge shortcut, or give a bigger punishement if he drives on the other lane for too long
     * imporve the calculation of time needed per tile and make a difference between straight, left and right curved tiles
     * save the data online automatically (not up to user)
+    * automate the Benchmarks. This can be done as soon as the localization system works more reliable and efficient.
     * set up remaining Benchmarks. This should not take long at all.
 
 # Other Benchmarks:

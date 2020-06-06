@@ -1,0 +1,780 @@
+HW_info:
+  item: documentation
+  verdict: true
+  hostname: autobot01
+  db_version: DB18
+  date: 2020-05-05
+  country: CH
+  institution: ETHZ
+  mac-adress: b8:27:eb:e2:65:35
+  platform: RPI3B+
+  hat_version: Duckiebot Hut
+  usb-memory: No USB memory detected!
+  sd-memory: 32GB
+  battery: Duckiebattery v. 1.0
+  actuation: DG01D dual-axis drive gear (48:1)
+  wheel_type: Type 1
+  camera: Waveshare Raspberry Pi Camera
+  led_type: Type 1
+  tester_name: Linus
+Segment Count:
+  Nb of files: 2
+  Nb of segment count meas. per file: 374
+  Measurements:
+    Segment count of file 0:
+      mean segment count: 61.0
+      median segment count: 67.0
+      std segment count: 22.1151
+      CV segment count: 0.3625
+      min segment count: 16.0
+      max segment count: 99.0
+    Segment count of file 1:
+      mean segment count: 61.0
+      median segment count: 67.0
+      std segment count: 22.1151
+      CV segment count: 0.3625
+      min segment count: 16.0
+      max segment count: 99.0
+    Overall mean segment count: 61.0
+    Overall median segment count: 67.0
+    Overall std segment count: 22.0714
+    Overall CV segment count: 0.3618
+    Overall min segment count: 16.0
+    Overall max segment count: 99.0
+Latency:
+  Nb of files: 2
+  Nb of latency meas. per file: 3
+  Measurements:
+    Latency of file 0:
+      mean latency (ms): 339.4
+      median latency (ms): 339.4
+      std latency (ms): N/A as latency only measured once
+      CV latency: N/A as latency only measured once
+      min latency (ms): 339.4
+      max latency(ms): 339.4
+    Latency of file 1:
+      mean latency (ms): 339.4
+      median latency (ms): 339.4
+      std latency (ms): N/A as latency only measured once
+      CV latency: N/A as latency only measured once
+      min latency (ms): 339.4
+      max latency(ms): 339.4
+    Overall mean latency (ms): 339.4
+    Overall median latency (ms): 339.4
+    Overall std latency (ms): 0.0
+    Overall CV latency: 0.0
+    Overall min latency (ms): 339.4
+    Overall max latency(ms): 339.4
+Node Info:
+  Nb of files: 2
+  Nb of nodes: 3
+  Measurements:
+    /autobot01/line_detector_node/segment_list:
+      Mean frequency (Hz): 7.6985
+      Std frequency (Hz): 0.0
+      CV frequency (Hz): 0.0
+      Mean message_count: 374.0
+      Std message_count: 0.0
+      CV message_count: 0.0
+      Mean connections: 1.0
+      Std connections: 0.0
+      CV connections: 0.0
+    /autobot01/lane_filter_node/lane_pose:
+      Mean frequency (Hz): 7.692
+      Std frequency (Hz): 0.0
+      CV frequency (Hz): 0.0
+      Mean message_count: 362.0
+      Std message_count: 0.0
+      CV message_count: 0.0
+      Mean connections: 1.0
+      Std connections: 0.0
+      CV connections: 0.0
+    /rosout:
+      Mean frequency (Hz): 44.7538
+      Std frequency (Hz): 0.0
+      CV frequency (Hz): 0.0
+      Mean message_count: 49.0
+      Std message_count: 0.0
+      CV message_count: 0.0
+      Mean connections: 22.0
+      Std connections: 0.0
+      CV connections: 0.0
+Total engineering data container:
+  Nb of files: 2
+  Measurements:
+    Engineering data of file 0:
+      CPU (CPU used in %):
+        Mean: 97.35
+        Median: 97.5
+        Standard Deviation: 0.6538
+        coefficient of variation: 0.0067
+      Swaps:
+        Mean: 21.2525
+        Median: 21.2525
+        Standard Deviation: 0.0
+        coefficient of variation: 0.0
+        Swaps max: 2147479552.0
+      Mem (memory used in %):
+        Mean: 72.1203
+        Median: 72.0864
+        Standard Deviation: 0.1284
+        coefficient of variation: 0.0018
+        Memory Max (bytes): 918188032.0
+    Engineering data of file 1:
+      CPU (CPU used in %):
+        Mean: 97.35
+        Median: 97.5
+        Standard Deviation: 0.6538
+        coefficient of variation: 0.0067
+      Swaps:
+        Mean: 21.2525
+        Median: 21.2525
+        Standard Deviation: 0.0
+        coefficient of variation: 0.0
+        Swaps max: 2147479552.0
+      Mem (memory used in %):
+        Mean: 72.1203
+        Median: 72.0864
+        Standard Deviation: 0.1284
+        coefficient of variation: 0.0018
+        Memory Max (bytes): 918188032.0
+    Overall engineering data container:
+      Overall CPU (CPU used in %):
+        Mean: 97.35
+        Median: 97.5
+        Standard Deviation: 0.6538
+        coefficient of variation: 0.0067
+      Overall Swaps (Swaps used in %):
+        Mean: 21.2525
+        Median: 21.2525
+        Standard Deviation: 0.0
+        coefficient of variation: 0.0
+        Swaps max: 2147479552.0
+      Overall Mem (memory used in %):
+        Mean: 72.1203
+        Median: 72.0864
+        Standard Deviation: 0.1284
+        coefficient of variation: 0.0018
+        Memory Max (bytes): 918188032.0
+Total engineering data node:
+  Nb of files: 2
+  Measurements:
+    Engineering data node of file 0:
+      Node:
+        Engineering Data Performance: Value
+      autobot01-fsm_node-1.log:
+        CPU (CPU used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 25.0
+          Median: 25.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.0
+          Median: 3.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-logic_gate_node-2.log:
+        CPU (CPU used in %):
+          Mean: 0.6
+          Median: 0.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 19.0
+          Median: 19.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-line_detector_node-3.log:
+        CPU (CPU used in %):
+          Mean: 45.7556
+          Median: 45.8
+          Standard Deviation: 0.1257
+          coefficient of variation: 0.0027
+        NThreads:
+          Mean: 14.0
+          Median: 14.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-ground_projection-4.log:
+        CPU (CPU used in %):
+          Mean: 8.4333
+          Median: 8.4
+          Standard Deviation: 0.0471
+          coefficient of variation: 0.0056
+        NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.9
+          Median: 6.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-duckiebot_visualizer-5.log:
+        CPU (CPU used in %):
+          Mean: 5.4111
+          Median: 5.4
+          Standard Deviation: 0.0314
+          coefficient of variation: 0.0058
+        NThreads:
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 2.9
+          Median: 2.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01_to_map __log:=/root/.ros/log/1f57bf9e-8b7c-11ea-a58d-b827ebe26535/autobot01_to_map-6.log:
+        CPU (CPU used in %):
+          Mean: 1.0
+          Median: 1.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 5.0
+          Median: 5.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_filter_node-7.log:
+        CPU (CPU used in %):
+          Mean: 30.0778
+          Median: 30.1
+          Standard Deviation: 0.103
+          coefficient of variation: 0.0034
+        NThreads:
+          Mean: 13.0
+          Median: 13.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 8.8
+          Median: 8.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_controller_node-8.log:
+        CPU (CPU used in %):
+          Mean: 28.5222
+          Median: 28.5
+          Standard Deviation: 0.0629
+          coefficient of variation: 0.0022
+        NThreads:
+          Mean: 12.0
+          Median: 12.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_pose_visualizer_node-9.log:
+        CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 4.5
+          Median: 4.5
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_detection_node-10.log:
+        CPU (CPU used in %):
+          Mean: 7.2444
+          Median: 7.2
+          Standard Deviation: 0.1066
+          coefficient of variation: 0.0147
+        NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.3
+          Median: 6.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_filter_node-11.log:
+        CPU (CPU used in %):
+          Mean: 5.3
+          Median: 5.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_avoidance_control_node-12.log:
+        CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+    Engineering data node of file 1:
+      Node:
+        Engineering Data Performance: Value
+      autobot01-fsm_node-1.log:
+        CPU (CPU used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 25.0
+          Median: 25.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.0
+          Median: 3.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-logic_gate_node-2.log:
+        CPU (CPU used in %):
+          Mean: 0.6
+          Median: 0.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 19.0
+          Median: 19.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-line_detector_node-3.log:
+        CPU (CPU used in %):
+          Mean: 45.7556
+          Median: 45.8
+          Standard Deviation: 0.1257
+          coefficient of variation: 0.0027
+        NThreads:
+          Mean: 14.0
+          Median: 14.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-ground_projection-4.log:
+        CPU (CPU used in %):
+          Mean: 8.4333
+          Median: 8.4
+          Standard Deviation: 0.0471
+          coefficient of variation: 0.0056
+        NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.9
+          Median: 6.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-duckiebot_visualizer-5.log:
+        CPU (CPU used in %):
+          Mean: 5.4111
+          Median: 5.4
+          Standard Deviation: 0.0314
+          coefficient of variation: 0.0058
+        NThreads:
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 2.9
+          Median: 2.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01_to_map __log:=/root/.ros/log/1f57bf9e-8b7c-11ea-a58d-b827ebe26535/autobot01_to_map-6.log:
+        CPU (CPU used in %):
+          Mean: 1.0
+          Median: 1.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 5.0
+          Median: 5.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_filter_node-7.log:
+        CPU (CPU used in %):
+          Mean: 30.0778
+          Median: 30.1
+          Standard Deviation: 0.103
+          coefficient of variation: 0.0034
+        NThreads:
+          Mean: 13.0
+          Median: 13.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 8.8
+          Median: 8.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_controller_node-8.log:
+        CPU (CPU used in %):
+          Mean: 28.5222
+          Median: 28.5
+          Standard Deviation: 0.0629
+          coefficient of variation: 0.0022
+        NThreads:
+          Mean: 12.0
+          Median: 12.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_pose_visualizer_node-9.log:
+        CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 4.5
+          Median: 4.5
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_detection_node-10.log:
+        CPU (CPU used in %):
+          Mean: 7.2444
+          Median: 7.2
+          Standard Deviation: 0.1066
+          coefficient of variation: 0.0147
+        NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.3
+          Median: 6.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_filter_node-11.log:
+        CPU (CPU used in %):
+          Mean: 5.3
+          Median: 5.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_avoidance_control_node-12.log:
+        CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        PMem (memory used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+    Overall engineering data node:
+      autobot01-fsm_node-1.log:
+        Overall CPU (CPU used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 25.0
+          Median: 25.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 3.0
+          Median: 3.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-logic_gate_node-2.log:
+        Overall CPU (CPU used in %):
+          Mean: 0.6
+          Median: 0.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 19.0
+          Median: 19.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-line_detector_node-3.log:
+        Overall CPU (CPU used in %):
+          Mean: 45.7556
+          Median: 45.8
+          Standard Deviation: 0.1257
+          coefficient of variation: 0.0027
+        Overall NThreads:
+          Mean: 14.0
+          Median: 14.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-ground_projection-4.log:
+        Overall CPU (CPU used in %):
+          Mean: 8.4333
+          Median: 8.4
+          Standard Deviation: 0.0471
+          coefficient of variation: 0.0056
+        Overall NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 6.9
+          Median: 6.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-duckiebot_visualizer-5.log:
+        Overall CPU (CPU used in %):
+          Mean: 5.4111
+          Median: 5.4
+          Standard Deviation: 0.0314
+          coefficient of variation: 0.0058
+        Overall NThreads:
+          Mean: 7.0
+          Median: 7.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 2.9
+          Median: 2.9
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01_to_map __log:=/root/.ros/log/1f57bf9e-8b7c-11ea-a58d-b827ebe26535/autobot01_to_map-6.log:
+        Overall CPU (CPU used in %):
+          Mean: 1.0
+          Median: 1.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 5.0
+          Median: 5.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 0.8
+          Median: 0.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_filter_node-7.log:
+        Overall CPU (CPU used in %):
+          Mean: 30.0778
+          Median: 30.1
+          Standard Deviation: 0.103
+          coefficient of variation: 0.0034
+        Overall NThreads:
+          Mean: 13.0
+          Median: 13.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 8.8
+          Median: 8.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_controller_node-8.log:
+        Overall CPU (CPU used in %):
+          Mean: 28.5222
+          Median: 28.5
+          Standard Deviation: 0.0629
+          coefficient of variation: 0.0022
+        Overall NThreads:
+          Mean: 12.0
+          Median: 12.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 3.6
+          Median: 3.6
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-lane_pose_visualizer_node-9.log:
+        Overall CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 4.5
+          Median: 4.5
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_detection_node-10.log:
+        Overall CPU (CPU used in %):
+          Mean: 7.2444
+          Median: 7.2
+          Standard Deviation: 0.1066
+          coefficient of variation: 0.0147
+        Overall NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 6.3
+          Median: 6.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_filter_node-11.log:
+        Overall CPU (CPU used in %):
+          Mean: 5.3
+          Median: 5.3
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 8.0
+          Median: 8.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 6.0
+          Median: 6.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0
+      autobot01-vehicle_avoidance_control_node-12.log:
+        Overall CPU (CPU used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall NThreads:
+          Mean: 9.0
+          Median: 9.0
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+        Overall PMem (memory used in %):
+          Mean: 2.8
+          Median: 2.8
+          Standard Deviation: 0.0
+          coefficient of variation: 0.0
+          Memory Max (bytes): 918188032.0

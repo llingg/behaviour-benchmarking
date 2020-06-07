@@ -209,14 +209,21 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
 
     This runs a slightly modified version of the original found [here](https://github.com/duckietown/duckietown-cslam/tree/master/08-post-processing).
 
-    (Or run the original
+    (To run the original use the following command:
     * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAGNAME_localization -e OUTPUT_BAG_PATH=/data/processed_BAGNAME_localization.bag -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`)
+      Note that when running the original post-processor there won't be a file created called `BAGNAME_db_estimation.yaml` which is necessary for the some of the Benchmarks (Ex. Lane Following)
 
     When the container stops, you should have a new bag called `processed_BAGNAME_localization.bag` as well as a new .yaml file called `BAGNAME_db_estimation.yaml` inside of your `path_to_bag_folder`. (This can take more than a minute, please be patient)
+    * Make sure that those files are readable by opening the `path_to_bag_folder` in a terminal and running:
+      - `sudo chmod 777 BAGNAME_db_estimation.yaml`
+    * Then place the file called `BAGNAME_db_estimation.yaml` into the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/post_processor`.
   * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html), that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map (for this Benchmark this should be `linus_loop`). The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line. Please run the graph-optimizer by running:
      * `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAGNAME_localization.bag -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v path_to_bag_folder:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
 
      This will generate at least one _.yaml_ file that will be stored in the folder `path_to_bag_folder`. If you followed the instructions and placed an April Tag with a different name than you Duckiebot on your localization standoff, you should find two _.yaml_ files. One will be named like your Duckiebot, and the other one like the name of the April Tag on you Duckiebot (Ex. autobot01.yaml). For the benchmarking we are only interested in the .yaml file that has the same name as the April Tag on top of your Duckiebot has.
+     * Make sure that those files are readable by opening the `path_to_bag_folder` in a terminal and running:
+         * `sudo chmod 777 APRILTAGID.yaml`
+     * Then place this file in the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/graph_optimizer`
 
   * For the rosbag recorded on the Duckiebot, run analyze-rosbag by:
     * cd into the `analyze_rosbag` folder found in behaviour-benchmarking repository by running `cd behaviour-benchmarking/packages/analyze_rosbag`
@@ -227,6 +234,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
     * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: `BAGNAME_duckiebot_constance.json`, `BAGNAME_duckiebot_lane_pose.json`,`BAGNAME_duckiebot_node_info.json`,`BAGNAME_duckiebot_segment_count.json`, `BAGNAME_duckiebot_latencies.json`
     * Make sure that those files are readable by opening the `bag` folder in a terminal and running:
         * `sudo chmod 777 FILENAME.json`
+    * Then place all those files in the folder `~/behaviour-benchmarking/data/BenchmarkXY/json`
 
 ToDo: explain the results that are  given after the processing, like explain what the latency exactly is etc. Specially about the .json files
 

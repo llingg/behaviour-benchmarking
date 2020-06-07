@@ -48,15 +48,15 @@ Latency:
     Latency of file 0:
       mean latency (ms): 339.4
       median latency (ms): 339.4
-      std latency (ms): N/A as latency only measured once
-      CV latency: N/A as latency only measured once
+      std latency (ms): N/A as only one valid latency measured
+      CV latency: N/A as only one valid latency measured
       min latency (ms): 339.4
       max latency(ms): 339.4
     Latency of file 1:
       mean latency (ms): 339.4
       median latency (ms): 339.4
-      std latency (ms): N/A as latency only measured once
-      CV latency: N/A as latency only measured once
+      std latency (ms): N/A as only one valid latency measured
+      CV latency: N/A as only one valid latency measured
       min latency (ms): 339.4
       max latency(ms): 339.4
     Overall mean latency (ms): 339.4

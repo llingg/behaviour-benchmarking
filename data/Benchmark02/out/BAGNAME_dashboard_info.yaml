@@ -1,0 +1,67 @@
+Container Name:
+  Type: Information
+dts-run-diagnostics-system-monitor:
+  Image Name: duckietown/dt-system-monitor:daffy-arm32v7
+  Image Tag: sha256:a4ff6718a1686c11d92ac439bc19e1162c34ae8396fc4d77782f550c5b21080a
+  Image Name and Tag: duckietown/dt-system-monitor:daffy-arm32v7@sha256:a4ff6718a1686c11d92ac439bc19e1162c34ae8396fc4d77782f550c5b21080a
+  Container Name: /dts-run-diagnostics-system-monitor
+  Autobot Name: autobot01
+  DT label architecture: arm32v7
+  DT label base image: dt-commons:daffy-arm32v7
+  DT label code branch: daffy
+  DT label code repository: dt-system-monitor
+  DT label code version major: daffy
+  DT label module type: dt-system-monitor
+  DT label template name: template-basic
+cocky_banach:
+  Image Name: proj-parking:light
+  Image Tag: sha256:7a42875db0688dace79586a045e620dbf892d1553a97dd6a7ac3d68e7bb618fe
+  Image Name and Tag: proj-parking:light@sha256:7a42875db0688dace79586a045e620dbf892d1553a97dd6a7ac3d68e7bb618fe
+  Container Name: /cocky_banach
+  Autobot Name: autobot01
+  DT label architecture: arm32v7
+  DT label base image: dt-ros-commons:daffy-arm32v7
+  DT label code branch: daffy
+  DT label code repository: dt-core
+  DT label code version major: daffy
+  DT label module type: dt-core
+  DT label template name: template-ros
+demo_all_drivers:
+  Image Name: duckietown/dt-duckiebot-interface:daffy
+  Image Tag: sha256:0bd696e5a9d9f22c17e0d022f04c3cdfca1c66e68751abe9d546e5ff18b24880
+  Image Name and Tag: duckietown/dt-duckiebot-interface:daffy@sha256:0bd696e5a9d9f22c17e0d022f04c3cdfca1c66e68751abe9d546e5ff18b24880
+  Container Name: /demo_all_drivers
+  Autobot Name: autobot01
+  DT label architecture: arm32v7
+  DT label base image: dt-ros-commons:daffy-arm32v7
+  DT label code branch: daffy
+  DT label code repository: dt-duckiebot-interface
+  DT label code version major: daffy
+  DT label module type: dt-duckiebot-interface
+  DT label template name: template-ros
+acquisition-bridge:
+  Image Name: duckietown/acquisition-bridge:daffy-arm32v7
+  Image Tag: sha256:ea2b9feccb29e23f6ca16cc4b324aa2d070dc41ad72555c501193e053d67a2c4
+  Image Name and Tag: duckietown/acquisition-bridge:daffy-arm32v7@sha256:ea2b9feccb29e23f6ca16cc4b324aa2d070dc41ad72555c501193e053d67a2c4
+  Container Name: /acquisition-bridge
+  Autobot Name: autobot01
+  DT label architecture: arm32v7
+  DT label base image: dt-ros-commons:daffy-arm32v7
+  DT label code branch: daffy
+  DT label code repository: acquisition-bridge
+  DT label code version major: daffy
+  DT label module type: acquisition-bridge
+  DT label template name: template-ros
+demo_all:
+  Image Name: duckietown/dt-car-interface:daffy
+  Image Tag: sha256:fa15152a12a69e2d4002e5bb634667024d3327f923c7d7add31017b83217e4ce
+  Image Name and Tag: duckietown/dt-car-interface:daffy@sha256:fa15152a12a69e2d4002e5bb634667024d3327f923c7d7add31017b83217e4ce
+  Container Name: /demo_all
+  Autobot Name: autobot01
+  DT label architecture: arm32v7
+  DT label base image: dt-ros-commons:daffy-arm32v7
+  DT label code branch: daffy
+  DT label code repository: dt-car-interface
+  DT label code version major: daffy
+  DT label module type: dt-car-interface
+  DT label template name: template-ros

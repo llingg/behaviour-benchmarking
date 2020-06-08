@@ -193,7 +193,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
     - `sudo chmod 777 BAGNAME_localization.bag`
     - `sudo chmod 777 BAGNAME_duckiebot.bag`
   * To get the information recorded by the diagnostic toolbox, visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
-  * Place the download .json file within you `bag` folder and rename it to `BAGNAME_diagnostics.json`.
+  * Place the download .json file within your `~/behaviour-benchmarking/data/BenchmarkXY/json` folder and rename it to `BAGNAME_diagnostics.json`.
 
   * To help the Duckietown community to gather the logs of the recorded bags, please create a folder, named BAGNAME, containing the two bag files as well as the .json file. Make zip of this folder and upload it to the bag folder found under [this link](https://drive.google.com/drive/folders/1pkjvPl8VyOj8K6jeUHXSE0XNPyVqgQDg?usp=sharing).
 
@@ -231,7 +231,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
           * `dts devel build -f --arch amd64`
     * Then run it with:
           * `docker run -v path_to_bag_folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=BAGNAME_duckiebot -it --rm duckietown/behaviour-benchmarking:v1-amd64`
-    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: `BAGNAME_duckiebot_constance.json`, `BAGNAME_duckiebot_lane_pose.json`,`BAGNAME_duckiebot_node_info.json`,`BAGNAME_duckiebot_segment_count.json`, `BAGNAME_duckiebot_latencies.json`
+    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: `BAGNAME_duckiebot_constant.json`, `BAGNAME_duckiebot_lane_pose.json`,`BAGNAME_duckiebot_node_info.json`,`BAGNAME_duckiebot_segment_count.json`, `BAGNAME_duckiebot_latencies.json`
     * Make sure that those files are readable by opening the `bag` folder in a terminal and running:
         * `sudo chmod 777 FILENAME.json`
     * Then place all those files in the folder `~/behaviour-benchmarking/data/BenchmarkXY/json`
@@ -267,17 +267,21 @@ ToDo: explain the results that are  given after the processing, like explain wha
     Within the final report which will be the end result, you will also fined some detailed information on what is taken into account ect.
     There are some instructions within the notebooks, however, they are mostly designed to be ran without having to do much, so the following steps won't take long. But please read the instructions carefully.
     If you followed the instructions above you ran at least two experiments. Please run for each experiment you have already done the first two steps before continuing.
-  * First open the notebook called: `94-analyse_dashboard.ipynb` and follow the instructions there. This will result in two .yaml files, one called `BAGNAME_software_information.yaml` and the other one called `BAGNAME_eng_perf_data_all.yaml` (ToDo add take nr to all of them) placed within the folder `behaviour_benchmarking/data/BenchmarkXY/out`.
+
+
+  * First open the notebook called `95-Trajectory-statistics` and follow the instructions there. This will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run. In this file you will find all kind of results considering the actual performance of the behaviour. It will produce you a .yaml file called ´BAGNAME_results_take_XY´ that contains all the information found.
+
+  * Now it is time to see if you have collected enough data, for this, please open and run the notebook ´97-compare_calc_mean_benchmarks´. This will open all your result yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a ´BAGNAM_final_result.yaml´ file which includes the mean values over all the experiments ran. If the standard deviation is too high, please run another experiment, complete the first two steps of the result computation and run this notebook again.
+
+  The .yaml file produced holds the following information:
 
       * The `software_information` file includes informations of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
           These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. This yaml file is used in the end for the final Benchmark report.
       * The `eng_perf_data_all` file on the other hand includes all kind of engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the CPU usage, the Memory usage and the NThreads used by each container. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
 
-  * Then open the notebook called `95-Trajectory-statistics` and follow the instructions there. This will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run. In this file you will find all kind of results considering the actual performance of the behaviour. It will produce you a .yaml file called ´BAGNAME_results_take_XY´ that contains all the information found.
 
-    * Now it is time to see if you have collected enough data, for this, please open and run the notebook ´97-compare_calc_mean_benchmarks´. This will open all your result yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a ´BAGNAM_final_result.yaml´ file which includes the mean values over all the experiments ran. If the standard deviation is too high, please run another experiment, complete the first two steps of the result computation and run this notebook again.
-    * The same exists for the engineering data stored in the file `eng_perf_data_all`. However, for this data we don't look at the standard deviation as during development it has been shown that this data does not change significantly over time. this means that you have to run the notebook called ´ToDo´ only once you know that you collected enough data. After running it it will produce a `eng_perf_data_all_final` file which includes the mean values of the analyzed data.
-    * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you fine a nice summary of the result, the metric used and the final results. This can in the end be converted into a PDF file showing a summery of everything.
+  * The same exists for the engineering data stored in the file `eng_perf_data_all`. However, for this data we don't look at the standard deviation as during development it has been shown that this data does not change significantly over time. this means that you have to run the notebook called ´ToDo´ only once you know that you collected enough data. After running it it will produce a `eng_perf_data_all_final` file which includes the mean values of the analyzed data.
+  * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you fine a nice summary of the result, the metric used and the final results. This can in the end be converted into a PDF file showing a summery of everything.
     If you don't have anything to compare just use the eng_perf_data_all_final_perfect and BAGNAM_final_result_perfect files which include measurements of a theoretical perfect run (not realistic in real life)
 
 ### Metrics

@@ -1,0 +1,17 @@
+verdict: True
+hostname: autobot01
+db_version: DB18
+date: 2020-05-05
+country: CH
+institution: ETHZ
+mac-adress: b8:27:eb:e2:65:35
+platform: RPI3B+
+hat_version: Duckiebot Hut
+usb-memory: No USB memory detected!
+sd-memory: 32GB
+battery: Duckiebattery v. 1.0
+actuation: DG01D dual-axis drive gear (48:1)
+wheel_type: Type 1
+camera: Waveshare Raspberry Pi Camera
+led_type: Type 1
+tester_name: Linus

@@ -1,0 +1,1 @@
+{"node": ["/autobot01/line_detector_node/segment_list", "/autobot01/lane_filter_node/lane_pose", "/rosout"], "message_count": [374, 367, 46], "connections": [1, 1, 19], "frequency": [7.998499140084541, 7.232018779342723, 45.01380257043625]}

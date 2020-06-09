@@ -46,7 +46,7 @@ Make sure you added the exact April Tag position to the map .yaml file and you e
 ## Computation
 RPI 3B
 <p align="center">
-     <img src="media/rpi3b.png" width="20%" height="20%" />
+     <img src="../../media/rpi3b.png" width="20%" height="20%" />
 </p>
 
 RPI 3B+

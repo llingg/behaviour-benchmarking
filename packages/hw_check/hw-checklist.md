@@ -51,12 +51,12 @@ RPI 3B
 
 RPI 3B+
 <p align="center">
-     <img src="media/rpi3bp.png" width="20%" height="20%" />
+     <img src="../../media/rpi3bp.png" width="20%" height="20%" />
 </p>
 
 RPI 4B
 <p align="center">
-     <img src="media/rpi4b.png" width="20%" height="20%" />
+     <img src="../../media/rpi4b.png" width="20%" height="20%" />
 </p>
 
 ## Actuation
@@ -64,53 +64,53 @@ RPI 4B
 Hut:
 Stepper Hat:
 <p align="center">
-     <img src="media/sideview_stepper_hat.jpg" width="20%" height="20%" />
+     <img src="../../media/sideview_stepper_hat.jpg" width="20%" height="20%" />
 </p>
 
 Duckiebot Hut:
 <p align="center">
-     <img src="media/duckiebot_hut.png" width="20%" height="20%" />
+     <img src="../../media/duckiebot_hut.png" width="20%" height="20%" />
 </p>
 
 Motors:
 DG01D dual-axis drive gear (48:1):
 So called Dagu Motor 48:1 (Yellow Motors)
 <p align="center">
-     <img src="media/dagu_motor.png" width="20%" height="20%" />
+     <img src="../../media/dagu_motor.png" width="20%" height="20%" />
 </p>
 
 Blue Motors with embedded hall effect sensors
 <p align="center">
-     <img src="media/dc_motor_db19.png" width="20%" height="20%" />
+     <img src="../../media/dc_motor_db19.png" width="20%" height="20%" />
 </p>
 
 
 Front Wheels:
 Type 1:
 <p align="center">
-     <img src="media/WheelType1.jpg" width="20%" height="20%" />
+     <img src="../../media/WheelType1.jpg" width="20%" height="20%" />
 </p>
 
 Type 2:
 <p align="center">
-     <img src="media/WheelType2.jpg" width="20%" height="20%" />
+     <img src="../../media/WheelType2.jpg" width="20%" height="20%" />
 </p>
 
 Type 3:
 <p align="center">
-     <img src="media/WheelType3.jpg" width="20%" height="20%" />
+     <img src="../../media/WheelType3.jpg" width="20%" height="20%" />
 </p>
 
 
 Back Wheels:
 Caster:
 <p align="center">
-     <img src="media/caster.png" width="20%" height="20%" />
+     <img src="../../media/caster.png" width="20%" height="20%" />
 </p>
 
 Omni:
 <p align="center">
-     <img src="media/omni.jpg" width="20%" height="20%" />
+     <img src="../../media/omni.jpg" width="20%" height="20%" />
 </p>
 
 
@@ -122,7 +122,7 @@ Waveshare Raspberry Pi Camera Module Kid 1080P with 160-FOV Fisheye Lens
 
 Caster:
 <p align="center">
-     <img src="media/camera.png" width="20%" height="20%" />
+     <img src="../../media/camera.png" width="20%" height="20%" />
 </p>
 
 ## Battery:
@@ -130,15 +130,15 @@ Caster:
 RAVPOWER RP-PB07:
 The so called standard white battery
 <p align="center">
-     <img src="media/ravpower.jpg" width="20%" height="20%" />
+     <img src="../../media/ravpower.jpg" width="20%" height="20%" />
 </p>
 
 Duckiebattery v. 1.0:
 <p align="center">
-     <img src="media/duckiebattery_front.png" width="20%" height="20%" />
+     <img src="../../media/duckiebattery_front.png" width="20%" height="20%" />
 </p>
 <p align="center">
-     <img src="media/duckiebattery_ports.png" width="20%" height="20%" />
+     <img src="../../media/duckiebattery_ports.png" width="20%" height="20%" />
 </p>
 
 ## Memory:
@@ -146,7 +146,7 @@ SDCard:
 At Duckietown SanDisks are used similar to the one used below:
 
 <p align="center">
-     <img src="media/SDcard16gb.jpg" width="20%" height="20%" />
+     <img src="../../media/SDcard16gb.jpg" width="20%" height="20%" />
 </p>
 
 They can have the size: 16GB, 32 GB, 64 GB, 128 GB, 256 GB
@@ -156,5 +156,5 @@ Type can be: U1 Class 10 or U3 class 10
 
 Magician Red Chassis:
 <p align="center">
-     <img src="media/magician_chassis.jpg" width="20%" height="20%" />
+     <img src="../../media/magician_chassis.jpg" width="20%" height="20%" />
 </p>

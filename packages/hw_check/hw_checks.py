@@ -94,7 +94,7 @@ autolab = input("In what autolab are you working? (Ex.: ETHZ, MIT etc.)\n")
 db_version = input("According to https://docs.duckietown.org/daffy/opmanual_duckiebot/out/duckiebot_configurations.html, please enter the type of your Duckiebot (DB19, DB18, DB18-Encoder, DB18-Robotarium, DB20, DBv2)\n")
 db_sw_version = input("Please enter the branch of the Software your running on your Duckiebot (Master19, daffy, daffy_new_deal etc.)\n")
 print("Please follow the following instructions to specify and doublecheck the important components\n")
-print("Please visit https://gitlab.com/llingg/behaviour_benchmarking/-/blob/master/hw-checklist.md and follow the instructions of step 1-6\n")
+print("Please open the markdown file called hw-checklist.md found within the package hw_check of the repository behaviour-benchmarking and follow the instructions of step 1-6\n")
 hw_request = input("Did all HW checks pass? [y/n]\n")
 if hw_request=='y':
     verdict = "True"
@@ -102,7 +102,7 @@ else:
     verdict = "False"
     print("Please note that there is no use in continuing here as the benchmark won't be valid\n")
 
-print("To answer the following questions please refer to https://gitlab.com/llingg/behaviour_benchmarking/-/blob/master/hw-checklist.md\n")
+print("To answer the following questions please refer to https://github.com/llingg/behaviour-benchmarking/tree/v1/packages/hw_check/hw-checklist.md\n")
 
 chassis_request = input("Is the duckiebot using the Magician Red Chassis? [y/n]\n")
 if chassis_request=='y':

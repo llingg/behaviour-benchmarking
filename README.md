@@ -1,8 +1,8 @@
-# Benchmarking: Introduction {#sec:benchmarking_introduction level=sec status=ready}
+# Lane Following Benchmark procedure {#sec:benchmarking_introduction level=sec status=ready}
 
 ## Requiries
 
-* Requires: [Duckiebot (correctly assembled, initialized and calibrated)](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/building_duckiebot_c0.html)
+* Requires: Duckiebot (correctly assembled, initialized and calibrated) in the version you want to Benchmark [daffy](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/building_duckiebot_c0.html),    [Master19](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/building_duckiebot_c0.html) etc.)
 * Requires: [Localization standoff](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html)
 * Requires: [Autobot](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html)
 * Requires: [2 straight and 4 curved tiles](https://docs.duckietown.org/daffy/opmanual_duckietown/out/dt_ops_appearance_specifications.html)
@@ -21,7 +21,7 @@ Below a few things you have to be careful with:
 ## Loop Assembly and map making
 Pleas note that the loop used for these benchmarks does NOT respect the Duckietown specifications and rules as it is not allowed to have two lanes next to each other without any visual barrier.
 However as all the experiments worked out fine and as the space was limited, the Benchmarks were done on this loop anyways.
-In the future it is strongly recommended to change the settings to a 3x3 loop that does respect the [Duckietown specifications](https://docs.duckietown.org/daffy/opmanual_duckietown/out/dt_ops_appearance_specifications.html)
+In the future it is strongly recommended to change the settings to a 3x3 loop that does respect the [Duckietown specifications](https://docs.duckietown.org/daffy/opmanual_duckietown/out/dt_ops_appearance_specifications.html). This can be done without having to change anything else, as the result computed etc will work on any kind of loop.
 
 First assemble the tiles to a 2x3 closed loop as seen below.
 
@@ -43,58 +43,74 @@ After follow the instructions found [here](https://docs.duckietown.org/daffy/opm
 Set up the offline localization following the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_demo.html)  (Steps 3.1-3.5).
 
 ## Software preparation
+* Make sure your duckietown shell is set to the version `daffy` for the upcoming procedure, evnen when you flashed you Duckiebot on Master19. Run the command:
+    * `dts --set-version daffy`
 * On your local computer create a folder called `bag`
-* (Fork and) clone the [behaviour_benchmarking](https://gitlab.com/llingg/behaviour_benchmarking/-/tree/master) repository
 * (Fork and) clone the [behaviour-benchmarking](https://github.com/llingg/behaviour-benchmarking) repository
-* Make sure that your dts command version is daffy (ToDo: how do I guarantee that diagnostics did not change?? duckietown shell commands commit 'commit 62809665b108832cdf58544ebb1d7a1d5ed997fc')
-* Be sure that `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons` images are updated. If not, pull them:
-    * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
-    * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
-    * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
-    * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
-* If all the images are updated you can start the following steps:
+* Be sure that `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons` images are updated according to the version you are using.
 
-1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
+  If not, for daffy pull:
 
-2. Start all the drivers in `dt-duckiebot-interface`:
-    * `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
+  * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
+  * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
+  * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
+  * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
 
-    and the glue nodes that handle the joystick mapping and the kinematics:
-    * `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
 
-    Make sure that this worked properly.
+  If not, for Master19 pull:
 
-3. Within the folder _packages/light_lf_ of the behaviour-benchmarking repository:
-     1. You can **build** the docker container as follows:
-    * `docker -H BOTNAME.local build --no-cache -t light_lf:v1 .`
+  * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
+  * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
+  * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
+  * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
 
-   2. After that, if there were no errors, you can **run** the light_lf:
-    * `docker -H BOTNAME.local run -it  --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:v1`
+Please note, that you do not have to pull the specific tags above if you want to test a new version of any of the containers. However if you want to test a contribution to dt-core which you wrote (for example a new line_detector) it is recommended to pull the according images above.
 
-## Add your contribution
-To see if you contribution has imporved the Lanefollowing just add your contribution into the _packages/light_lf/packages_ folder and build the container again:
+* If all the images are at the right version you can start the following steps:
+For daffy:
+  1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
+
+  2. Start all the drivers in `dt-duckiebot-interface`:
+
+      * `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
+
+
+      and the glue nodes that handle the joystick mapping and the kinematics:
+
+      * `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
+
+      Make sure that this worked properly.
+
+  3. Within the folder _packages/light_lf_ of the behaviour-benchmarking repository:
+       1. You can **build** the docker container as follows:
+      * `docker -H BOTNAME.local build --no-cache -t light_lf:v1 .`
+
+     2. After that, if there were no errors, you can **run** the light_lf:
+      * `docker -H BOTNAME.local run -it  --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:v1`
+
+For Master19:
+
+Follow the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_lane_following.html) to start lane following, or the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_indefinite_navigation.html) to start the indefinite navigation.
+
+## Add your contribution in daffy
+To see if you contribution has improved the Lane following just add your contribution into the _packages/light_lf/packages_ folder and build the container again:
+
   * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
 Then run your version of dt-core:
+
   * `docker -H BOTNAME.local run -it --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
 
 For example, when you have worked one the lane_filter, then simply add your entire lane_filter folder into the folder _packages/light_lf/packages_. Please make sure that you use the precise name, as then the default version of whatever package is automatically replaced by yours.
 To get all the different packages in which you can make changes or work in please check [here](https://github.com/duckietown/dt-core/tree/daffy/packages).
 
-If you would like to run indefinite_navigation instead of just lane_following, just uncomment line 3 in the light_lf.launch file found in light_lf/packages/light_lf/launch folder and comment out line 2.
+If you would like to run indefinite_navigation instead of just lane_following, just un-comment line 3 in the light_lf.launch file found in light_lf/packages/light_lf/launch folder and comment out line 2.
 
 In the end it is the same as if you would simply clone the [dt-core](https://github.com/duckietown/dt-core) repository and building and running this on your Duckiebot.
 However, it is suggested to develop as you wish and then for the actual Benchmarking to use the way explained above which uses a lighter version of the launch files. This guarantees the benchmarks to be comparable.
 
-# Lane Following Benchmark {#sec:actual_benchmarking level=sec status=ready}
 
-## General information
-  The Benchmarking is set up in a way such that up to to point 6 the procedure stays the same no matter what you are Benchmarking. Starting at point 6 there will be slight changes in the processing and analysis of the data depending on the Benchmark. However these changes are very small and the main changes are within the metrics etc.
-  The goal of every Benchmark is to produce a final pdf file that reports the results and compares them to another Benchmark of your choice. Ideally this benchmark it is compared to is the mean of all the Benchmarks ran all over the world of this type ran with the standard Duckietown software (for example the stable daffy commit of the containers `dt-core`, `dt-car-interface`, `dt-duckiebot-interface`, `dt-ros-commons`).
-  However to be able to compare your Software with another one in any type of Benchmark, you first need to run at least 2 experiments. For each experiment there will be some recorded bags etc which then will be processed, analyzed and evaluated. However, it is recommended to run at least 5 experiments, such that you should have enough data to be able to make a conclusion without having to start everything back up again.
-  The resulting evaluations of each experiment you run will then be again analyzed and for all the meaningful measurements, the means, medians and standard deviations are calculated. For each meaningful measurement the [coefficient of variation](https://www.researchgate.net/post/What_do_you_consider_a_good_standard_deviation) is calculated and if this value is below 1 you get a green light to compute the final Benchmarking report. This means that you have to run at least to experiments and then start running the notebook that calculates the variation of your computed results after each new experiment. So the amount of experiments that need to be run depend on the stability of your results. As soon as you get a green light of all the important results, compute the mean of all the results over all the experiments you ran (at least two).
-  With this .yaml file including all the means, you are finally ready to run the comparison/analysis of your results. This will then generate a pdf report that analysis your solution as well as compares it to the results of another Benchmark you selected(can be any Benchmark ran of the same type). Based on the final report file you get at the end you can easily tell if your Software solution did improve the overall Performance or not and where your solution is better and where it is worse.
 
-## Hardware Check (Ignore for now):
+## Hardware Check:
   First of all, for each Duckiebot involved,  run the hw_check you can find within the cloned behaviour-benchmarking repository. Therefor, follow the following steps:
 
   * Go into the folder hw_check by running:
@@ -109,8 +125,8 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
     TODO: at the moment Hat and Pi not detected! Figure out why.
 
   * When the Docker Container has finished, visit: `http://BOTNAME.local:8082/config` and download the .yaml file with your information in the name.
-  * Place the .yaml file within the _data/BenchmarkXY_ folder of your behaviour_benchmarking repository.
-  * Furthermore, set up your own [autolab fleet rooster](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_fleet_roster.html)
+  * Place the .yaml file within the _data/BenchmarkXY_ folder of your behaviour-benchmarking repository.
+  * Furthermore, it is suggested that you set up your own [autolab fleet rooster](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_fleet_roster.html). However, this is not necessary.
 
 
 ## Duckiebot preparation:
@@ -129,7 +145,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
   * Then start and enter a container on your Duckiebot by running:
     - `dts duckiebot demo --demo_name base --duckiebot_name AUTOBOT_NAME`
   * Then prepare the command to record a rosbag within that container:
-    * `rosbag record -O /data/bagrec/BAGNAME_duckiebot.bag --duration 50 /AUTOBOT_NAME/line_detector_node/segment_list /AUTOBOT_NAME/lane_filter_node/lane_pose /rosout`
+    - `rosbag record -O /data/bagrec/BAGNAME_duckiebot.bag --duration 50 /AUTOBOT_NAME/line_detector_node/segment_list /AUTOBOT_NAME/lane_filter_node/lane_pose /rosout`
 
     Please note that if you are using Master19 you should subscribe to `/AUTOBOT_NAME/lane_controller_node/lane_pose` instead of `/AUTOBOT_NAME/lane_filter_node/lane_pose`
 
@@ -137,8 +153,9 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
 
 ## Place your Duckiebot within the map:
   Place your Duckiebot in the beginning of the straight part that is _on the bottom of the loop_ relative to the origin of the coordinate system (see image below) of the loop on the outer line such that the Duckiebot drives around the the loop counter-clockwise.
+  Below you see an image on where you should place the Duckiebot, in this image the origin of the global coordinate frame of the map (so the point from where you measured the distances of the April Tags when you added them to the map) lies in the bottom right (in the corner near the Duckiebot).
 
-  ToDo add image to where to place DB
+  ![db_start_pos](/media/db_start_pos.jpg){ width=50% }
 
 ## Prepare 4 terminals:
   Make sure that you carefully read through the steps and the `note` section below before starting up everything. It is important that you start recording the bags at roughly the same time and press `a` to start lane following or indefinite navigation straight after. Therefor first starting the diagnostic toolbox, then start recording both the bags and straight after start lanefollowing by pressing 'a'.
@@ -167,13 +184,13 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
     - For the BAGNAME please use the following convention:
       - `Country_Autolab_LoopName_Date_GithubUserName_HWConfig_SWConfig`
     * Where:
-      - `Country`: is the country you ran your benchmark (Ex. CH, USA, DE etc.)
-      - `Autolab`: is the Autolab you ran your benchmark in (Ex. ETHZ etc.)
-      - `LoopName`: is the name of the loop on which you recorded your benchmark, at the moment this should be `linus_loop`
-      - `Date`: is the date on which you ran the benchmark in the format DDMMYEAR(Ex. 17022020)
-      - `GithubUserName`: is your github username (Ex. duckietown)
-      - `HWConfig`: is the hardware configuration of the Duckiebot you used (Ex. DB18, DB19 etc.)
-      - `SWConfig`: is the software configuration used on the Duckiebot (Ex. Daffy, Master19 etc.)
+        - `Country`: is the country you ran your benchmark (Ex. CH, USA, DE etc.)
+        - `Autolab`: is the Autolab you ran your benchmark in (Ex. ETHZ etc.)
+        - `LoopName`: is the name of the loop on which you recorded your benchmark, at the moment this should be `linus_loop`
+        - `Date`: is the date on which you ran the benchmark in the format DDMMYEAR(Ex. 17022020)
+        - `GithubUserName`: is your github username (Ex. duckietown)
+        - `HWConfig`: is the hardware configuration of the Duckiebot you used (Ex. DB18, DB19 etc.)
+        - `SWConfig`: is the software configuration used on the Duckiebot (Ex. Daffy, Master19 etc.)
 
 ## File gathering:
   After the rosbag recording as well as the Diagnostic Toolbox have finished you can stop the Duckiebot by pressing 's' on your keyboard.
@@ -193,12 +210,11 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
     - `sudo chmod 777 BAGNAME_localization.bag`
     - `sudo chmod 777 BAGNAME_duckiebot.bag`
   * To get the information recorded by the diagnostic toolbox, visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
-  * Place the download .json file within your `~/behaviour-benchmarking/data/BenchmarkXY/json` folder and rename it to `BAGNAME_diagnostics.json`.
+  * Place the download .json file within you `bag` folder and rename it to `BAGNAME_diagnostics.json`.
 
   * To help the Duckietown community to gather the logs of the recorded bags, please create a folder, named BAGNAME, containing the two bag files as well as the .json file. Make zip of this folder and upload it to the bag folder found under [this link](https://drive.google.com/drive/folders/1pkjvPl8VyOj8K6jeUHXSE0XNPyVqgQDg?usp=sharing).
 
-
-6. Processing the recorded bags:
+## Processing the recorded bags:
   You need to know where your bag is. The folder containing it is referred as `path_to_bag_folder` in the command below. It is recommended to create new separate folders for each Benchmark (with date and/or sequence number). If you followed the instructions above, your bags are located in the folder `bag`. Example for `path_to_bag_folder` is /home/linus/bag.
   * Cd into the package `08-post-processing` found in your `behaviour-benchmarking` repository by running:
       * `cd behaviour-benchmarking/packages/08-post-processing`
@@ -231,15 +247,20 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
           * `dts devel build -f --arch amd64`
     * Then run it with:
           * `docker run -v path_to_bag_folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=BAGNAME_duckiebot -it --rm duckietown/behaviour-benchmarking:v1-amd64`
-    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: `BAGNAME_duckiebot_constant.json`, `BAGNAME_duckiebot_lane_pose.json`,`BAGNAME_duckiebot_node_info.json`,`BAGNAME_duckiebot_segment_count.json`, `BAGNAME_duckiebot_latencies.json`
+    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: 
+      * `BAGNAME_duckiebot_constant.json`: containing the value of each of the constants that was used for the experiment
+      * `BAGNAME_duckiebot_lane_pose.json`: containing the information about the relative pose estimation of the Duckiebot
+      * `BAGNAME_duckiebot_node_info.json`: containing information about the update frequency of the different nodes, the number of connections etc)
+      * `BAGNAME_duckiebot_segment_count.json`: containing information about the number of segments detected at each time stamp
+      * `BAGNAME_duckiebot_latencies.json`: contains information about the latency measured from the very beginning up to and including the detector node
+      
     * Make sure that those files are readable by opening the `bag` folder in a terminal and running:
         * `sudo chmod 777 FILENAME.json`
     * Then place all those files in the folder `~/behaviour-benchmarking/data/BenchmarkXY/json`
 
-ToDo: explain the results that are  given after the processing, like explain what the latency exactly is etc. Specially about the .json files
 
 
-7. Result analysis preparation:
+##  Result analysis preparation:
   * Place the .yaml file created by the graphoptimizer with the name of the April Tag that is on top of your Duckiebot into the _data/BenchmarkXY/yaml/graph_optimizer_ folder (please note that it is important that you take the correct .yaml file as the one named after your actual Duckiebot should **not** be placed within the mentioned folder). Then place the .yaml file created by the post_processor called `BAGNAME_db_estimation.yaml` into the _data/BenchmarkXY/yaml/post_processor_ folder. Also place all the .json files (the one downloaded from the dashboard as well as the 5 created by the analyze_rosbag container) into the  _data/BenchmarkXY/json_ folder of your behaviour_benchmarking repository.
   * Note that XY stands for a number, so for your first Benchmark name the folder _Benchmark01_.
   * Create a virtual environment as you already did for when you added the map to your duckietown-world repository or when you added the exact position of the ground april tags. However, this time, please create this virtual environment within your cloned behaviour_benchmarking repository by following the instructions below:
@@ -260,128 +281,60 @@ ToDo: explain the results that are  given after the processing, like explain wha
     If you encounter any issues with the steps above, please click [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) for more detailed instructions.
     5. Navigate to the notebooks
 
-8. Result computation:
+## Result computation:
 
-    In the following it is briefly explained how to achieve some actual results based on the recorded data. The first two steps have to be repeated for each experiment you ran for this Benchmark. They will extract and analyse the engineering data as well as the actual behaviour. The further steps then will help you decide weather you ran enough experiments or not and then finally let you compare your Benchmark to others.
-    Please note, that detailed explenation on what exactly is calculated and how it is analysed is explained in the notebooks directly. So if you are interested in more detail what exactly happens, please have a detailed look at them and read the comment when running them.
-    Within the final report which will be the end result, you will also fined some detailed information on what is taken into account ect.
-    There are some instructions within the notebooks, however, they are mostly designed to be ran without having to do much, so the following steps won't take long. But please read the instructions carefully.
-    If you followed the instructions above you ran at least two experiments. Please run for each experiment you have already done the first two steps before continuing.
+  In the following it is briefly explained how to achieve some actual results based on the recorded data. The first two steps have to be repeated for each experiment you ran for this Benchmark. They will extract and analyze the engineering data as well as the actual behaviour. The further steps then will help you decide weather you ran enough experiments or not and then finally let you compare your Benchmark to others.
+  Please note, that detailed explanation on what exactly is calculated and how it is analyzed is explained in the notebooks directly. So if you are interested in more detail what exactly happens, please have a detailed look at them and read the comment when running them.
+  Within the final report which will be the end result, you will also fined some detailed information on what is taken into account ect.
+  There are some instructions within the notebooks, however, they are mostly designed to be ran without having to do much, so the following steps won't take long. But please read the instructions carefully.
+  If you followed the instructions above you ran at least two experiments. Please run for each experiment you have already done the first steps before continuing.
 
 
-  * First open the notebook called `95-Trajectory-statistics` and follow the instructions there. This will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run. In this file you will find all kind of results considering the actual performance of the behaviour. It will produce you a .yaml file called ´BAGNAME_results_take_XY´ that contains all the information found.
+  * First open the notebook called `95-Trajectory-statistics` and follow the instructions there. To run this Notebook, you will need the file called `AutobotAPRILTAGNB.yaml` found in the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/graph_optimizer` (where APRILTAGNR is the number of the April Tag that is placed on top of your Duckiebot) and the file `BAGNAME_db_estimation.yaml` found within the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/post_processor`.
+  It will result in a .yaml file called BAGNAME__benchmark_results_test_XY.yaml where XY is the number of the test run. In this file you will find all kind of results considering the actual performance of the behaviour. The file will be stored within the folder `~/behaviour-benchmarking/data/BenchmarkXY/benchmarks/same_bm` and will be further analyzed below.
+  This notebook extracts all kind of data measured by the localization system like the actual trajectory, the absolute mean lane offset of the Duckiebot, the number of tiles the Duckiebot covered etc. For more details on what exactly is analyzed and how the analysis is done, please have a look at the Notebook itself. However, below see below for a list of all computed measurements:
+      * The mean of the offset (distance and angle) of the Duckiebot in respect to the center of the lane [m]
+      * The number of rounds completed (entirely completed by the center of the April Tag placed on the localization standoff on your Duckiebot
+      * The number of tiles covered (center of April Tag coompletely passed the tile)
+      * Avg time needed per tile in seconds
+      * Length of the Benchmark in seconds
+      * Actual length of the benchmark in seconds
+      * Mean absolute lane offset measured by Watchtowers (ground truth) [m]
+      * Std of the absolute lane offset measured by Watchtowers (ground truth) [m]
+      * Mean absolute relative angle measured by Watchtowers (ground truth) [deg]
+      * Std of the absolute relative angle measured by Watchtowers (ground truth) [deg]
+      * Mean absolute lane offset measured by the Duckiebot [m]
+      * Std of the absolute lane offset measured by the Duckiebot [m]
+      * Mean absolute relative angle measured by the Duckiebot [deg]
+      * td of the absolute relative angle measured by the Duckiebot [deg]
+      * Mean of the absolute difference between lane offset measured by the Duckiebot and by the Watchtowers (ground truth) [m]
+      * Std of the absolute difference between lane offset measured by the Duckiebot and by the Watchtowers (ground truth) [m]
+      * Mean of the absolute difference between the relative angle measured by the Duckiebot and by the Watchtowers (ground truth) [deg]
+      * Std of the absolute difference between the relative angle measured by the Duckiebot and by the Watchtowers (ground truth) [deg]
 
-  * Now it is time to see if you have collected enough data, for this, please open and run the notebook ´97-compare_calc_mean_benchmarks´. This will open all your result yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a ´BAGNAM_final_result.yaml´ file which includes the mean values over all the experiments ran. If the standard deviation is too high, please run another experiment, complete the first two steps of the result computation and run this notebook again.
+  
+
+  * Now it is time to see if you have collected enough data, for this, please open and run the notebook `97-compare_calc_mean_benchmarks`. This will open all your result .yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a `BAGNAME_benchmark_final_results.yaml` file which includes the mean values over all the experiments ran and saves it in the folder `~/behaviour-benchmarking/data/BenchmarkXY/benchmarks/final`.
+  The Notebook produces some nice visualizations that show the user if its data is stable enough or not and why it is important to have stable data. The user literally gets a green or a red light weather he is ready to actually run the evaluation of the performance or if more data needs to be collected.
+  If the standard deviation is too high, please run another experiment, complete the first step of the result computation and run this notebook again.
+  If not, please upload the resulting yaml file in the `Results` folder found [here](https://drive.google.com/drive/folders/1pkjvPl8VyOj8K6jeUHXSE0XNPyVqgQDg?usp=sharing)
 
   The .yaml file produced holds the following information:
-
-      * The `software_information` file includes informations of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
-          These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. This yaml file is used in the end for the final Benchmark report.
-      * The `eng_perf_data_all` file on the other hand includes all kind of engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the CPU usage, the Memory usage and the NThreads used by each container. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
-
-
-  * The same exists for the engineering data stored in the file `eng_perf_data_all`. However, for this data we don't look at the standard deviation as during development it has been shown that this data does not change significantly over time. this means that you have to run the notebook called ´ToDo´ only once you know that you collected enough data. After running it it will produce a `eng_perf_data_all_final` file which includes the mean values of the analyzed data.
-  * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you fine a nice summary of the result, the metric used and the final results. This can in the end be converted into a PDF file showing a summery of everything.
-    If you don't have anything to compare just use the eng_perf_data_all_final_perfect and BAGNAM_final_result_perfect files which include measurements of a theoretical perfect run (not realistic in real life)
-
-### Metrics
-Arithmetic mean:
-$$\bar{x}=\frac{1}{n} \sum_{i=1}^n x_i $$
-
-Standard deviation:
-$$s=\sqrt{\frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2}$$
-
-coefficient of variation:
-CV = std/mean*100 [%]
-A CV in the range of 20% normally stands for an acceptable standard deviation, this means that the std deviation compared to the mean does not very too much
-However in this Benchmarking, the purpose of looking at the CV factor is only to be sure that the experiment recorded was not a lucky or unlucky run, therefor, a CV below 100% is already acceptable
-
-Note: the localization system that measures the ground truth, measures the position of the Apriltag placed on the localization standoff of your Duckiebot. This means that if this Apriltag is not placed very accurately, your results will be false.
-
-Engineering score: Update frequency, latency, cpu usage etc
-Behaviour score: offset (distance and angle), calculated d and phi compared to ground truth, distance travelled, duration of Benchmark
-
-ToDo: Spit out type of tile where Benchmark was stopped in case of an early termination
-ToDo: Make one notebook out of all where first the localization bag is analyzed, then (if there is daign toolbox info) the toolbox info is analysed (up to the moment where it crashed)
-Then the bag from the duckiebot is analyzed (also up to the time where the DB crashed), then the mean calculation and the std calculation just for the files that are available if there is only one just bring it in the right format if there are several then calc mean. For the std just use the data recorded of loc system or of DB if there is some data (do not look at diag data).
-Then for the score check what is available and print whatever is available.
-ToDo: Final comparison works also without diagnostic toolbox data -> don't compare this stuff if it is not available -> then user must type the container version by himselfe!
-ToDo: same for the bag recorded directly on the Duckiebot
+       * Software information of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
+       These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. Therefore, this data is called `static`
+       * Engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the total overall performance information (CPU usage, the Memory usage and the NThreads). Moreover it includes total performance information of each node of container dt-core. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
+       * Number of experiments ran
+       * Runtimes of different experiments
+       * Info about if enough data collected
+       * Analysis of all data from Notebook 95 (Mean, Median, Std, CV etc.)
+       * Information about the trajectories
 
 
-### Termination Criteria
+  * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you find a nice summary of all the measured results, the metric used and the final results.
+  Please hava look at the notebook 96 [example](https://github.com/llingg/behaviour-benchmarking/blob/v1/notebooks/96-compare_2_benchmarks-Example.ipynb) for further details about what the final report includes.
+  
 
-The Benchmark is officially terminated after the 50 seconds are up. However when the Duckiebot is out of sight for more then 3 seconds or if the Duckiebot takes more then 30 seconds
-to get across 1 tile the Benchmark will be terminated early. This will be taken into account into the final Benchmark score.
-An early termination will not be considered as a failiure but will just lead to a lower score.
 
 ### Test the code stability
-You can test the stability of your code when running some experiments under some specific conditions and comparing the result to the original one.
-For example you can cover the right white line, or the yellow middle line etc.
-
-# For distance keeping:
-interesting nodes:
-/autobot01/vehicle_avoidance_control_node/car_cmd                            171 msgs @   5.3 Hz : duckietown_msgs/Twist2DStamped  
-             /autobot01/vehicle_avoidance_control_node/switch                               3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped     
-             /autobot01/vehicle_avoidance_control_node/vehicle_detected                    40 msgs @   2.1 Hz : duckietown_msgs/BoolStamped     
-             /autobot01/vehicle_detection_node/detection                                   41 msgs @   2.1 Hz : duckietown_msgs/BoolStamped     
-             /autobot01/vehicle_detection_node/detection_time                              40 msgs @   2.0 Hz : std_msgs/Float32                
-             /autobot01/vehicle_detection_node/switch                                       3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped     
-             /autobot01/vehicle_filter_node/switch                                          3 msgs @   0.1 Hz : duckietown_msgs/BoolStamped
-
-# Future work
-    * Improve the out_of_sight condition such that the Watchtowers can still see the Duckiebot but it counts as out of sight if he is on a tile which is not part of the loop for longer then 3 seconds.
-    * Also improve the offset calculation and punish the score of the Benchmark if the Duckiebot takes for example a huge shortcut, or give a bigger punishement if he drives on the other lane for too long
-    * imporve the calculation of time needed per tile and make a difference between straight, left and right curved tiles
-    * save the data online automatically (not up to user)
-    * automate the Benchmarks. This can be done as soon as the localization system works more reliable and efficient.
-    * set up remaining Benchmarks. This should not take long at all.
-
-# Other Benchmarks:
-    * Distance keeping:
-        Prepare two Duckiebots, one dummy and one that is used for the testing. Then set the gain of the 'dummy' Duckiebot to 0.6 and make sure the gain of the autobot is at 1.0. Place the two Duckiebots behind each other and and start lane_following on both of them. Let them drive for half a round and then increase the gain of the 'dummy' Duckiebot to 0.8. Half a round later increase the gain to 1.0.
-        During this time record the bags on both the Duckiebot and the localization system. For the Duckiebot please record the following nodes: ToDo.
-        Note that the Duckiebot used as a 'dummy' that drives infront does not need to have the acquisition bridge running.
-        Then with the bags recorded run the notebook that analysis the engineering data, this is compatible for any kind of benchmark.
-        Within the notebook 95 add some analaysis that compares the distance between the two Duckiebots to the reference distance the Duckiebot in the back was supposed to keep. This can be done very easely by comparing the relative pose of the two Duckiebots. At the same time analyse the calculation the Duckiebot in the back has made and compare its estimated relative distance to the ground truth measured by the watchtowers.
-        Also check how well lane following is doing when having a Duckiebot in front.
-        Please note that you will have to add some lines into the lane_following.launch file to start the vehicle detection.
-
-        As a metrics use: for the engineering data the same as for Lane Following, and for the benchmarking the mean difference between the actual distance and the reference distance, the mean difference between the estimated distance by the Duckiebot and the actual distance measured by the watchtowers.
-    * Red line detection:
-
-
-    * Intersection Navigation:
-
-
-
-# Text for final report:
-
-
-
-
-
-The metrics used here to generate a score are the following (please not that in brackets the priorities are noted, H = High priority, M = Medium priority and L = low priority:
-1. Behaviour
-    * Mean distance to the middle of the lane (H)
-    * Mean heading offset compared to the reference heading (H)
-    * Mean difference between the calculated offset by the Duckiebot and the actual offset calculated by the Watchtowers. (M)
-    * Mean difference between the calculated heading error by the Duckiebot and the actual heading error calculated by the Watchtowers. (M)
-    * % crashes (number of early stops due to slow driving or crashes devided by the number of experiments ran) (H)
-    * Mean time until termination (L)
-    * Mean time needed per tile (L)
-    *
-2. Engineering data:
-    * Mean latency (lag up to and including the detector node) (H)
-    * Mean of the update frequency of the different nodes (H)
-    * Mean of the CPU usage of the different containers (H)
-    * Mean of the Memory usage of the different containers (L)
-    * Mean of the nr of Threads of the different containers (L)
-    * Overall CPU usage (H)
-    * Overall Memory usage (M)
-    * Overall SWAP usage (M)
-
-Below you see a comparison of all the metrics and the actual result. Furthermore we plot some graphs that visualize the differences. Please note that there are more graphs then metrices mentioned above as we plot some more information which is not taken into account for the Score calculation as some of them are related to each other.
-
-Below it compares the results of both of the benchmarks and tells you which one was better considering the actual behaviour and considering the engineering data.
-Based on the priorities shown above it tells you, which of the Benchmark performed better overall.
+  You can test the stability of your code when running some experiments under some specific conditions and comparing the result to the original one.
+  For example you can cover the right white line, or the yellow middle line etc.

@@ -43,7 +43,7 @@ After follow the instructions found [here](https://docs.duckietown.org/daffy/opm
 Set up the offline localization following the instructions found [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_demo.html)  (Steps 3.1-3.5).
 
 ## Software preparation
-* Make sure your duckietown shell is set to the version `daffy` for the upcoming procedure, evnen when you flashed you Duckiebot on Master19. Run the command:
+* Make sure your duckietown shell is set to the version `daffy` for the upcoming procedure, even when you flashed you Duckiebot on Master19. Run the command:
     * `dts --set-version daffy`
 * On your local computer create a folder called `bag`
 * (Fork and) clone the [behaviour-benchmarking](https://github.com/llingg/behaviour-benchmarking) repository
@@ -51,51 +51,57 @@ Set up the offline localization following the instructions found [here](https://
 
   If not, for daffy pull:
 
-  * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
-  * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
-  * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
-  * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
+    * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
+    * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
+    * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
+    * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
+
 
 
   If not, for Master19 pull:
 
-  * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
-  * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
-  * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
-  * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
+    * `docker -H BOTNAME.local pull duckietown/dt-core:daffy-arm32v7@sha256:4c7633c2041f5b7846be2346e0892c9f50987d2fd98d3479ec1a4cf378f52ee6`
+    * `docker -H BOTNAME.local pull duckietown/dt-car-interface:daffy-arm32v7@sha256:e3db984157bf3a2b2d4ab7237536c17b37333711244a3206517daa187c143016`
+    * `docker -H BOTNAME.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7@sha256:94a9defa553d1e238566a621e084c4b368e6a9b62053b02f0eef1d5685f9ea73`
+    * `docker -H BOTNAME.local pull duckietown/dt-ros-commons:daffy-arm32v7@sha256:20840df4cd5a8ade5949e5cfae2eb9b5cf9ee7c0`
 
 Please note, that you do not have to pull the specific tags above if you want to test a new version of any of the containers. However if you want to test a contribution to dt-core which you wrote (for example a new line_detector) it is recommended to pull the according images above.
 
 * If all the images are at the right version you can start the following steps:
+
 For daffy:
-  1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
 
-  2. Start all the drivers in `dt-duckiebot-interface`:
+    1. Make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.    
 
-      * `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
+    2. Start all the drivers in `dt-duckiebot-interface`:
+
+        * `dts duckiebot demo --demo_name all_drivers --duckiebot_name BOTNAME --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy`
 
 
-      and the glue nodes that handle the joystick mapping and the kinematics:
+        and the glue nodes that handle the joystick mapping and the kinematics:
 
-      * `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
+        * `dts duckiebot demo --demo_name all --duckiebot_name BOTNAME --package_name car_interface --image duckietown/dt-car-interface:daffy`
 
-      Make sure that this worked properly.
+        Make sure that this worked properly.
 
-  3. Within the folder _packages/light_lf_ of the behaviour-benchmarking repository:
-       1. You can **build** the docker container as follows:
-      * `docker -H BOTNAME.local build --no-cache -t light_lf:v1 .`
+    3. Within the folder _packages/light_lf_ of the behaviour-benchmarking repository:
+         1. You can **build** the docker container as follows:
 
-     2. After that, if there were no errors, you can **run** the light_lf:
-      * `docker -H BOTNAME.local run -it  --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:v1`
+            - `docker -H BOTNAME.local build --no-cache -t light_lf:v1 .`
+
+         2. After that, if there were no errors, you can **run** the light_lf:
+
+            - `docker -H BOTNAME.local run -it  --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:v1`
 
 For Master19:
 
-Follow the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_lane_following.html) to start lane following, or the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_indefinite_navigation.html) to start the indefinite navigation.
+    Follow the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_lane_following.html) to start lane following, or the instructions found [here](https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_indefinite_navigation.html) to start the indefinite navigation.
 
 ## Add your contribution in daffy
 To see if you contribution has improved the Lane following just add your contribution into the _packages/light_lf/packages_ folder and build the container again:
 
   * `docker -H BOTNAME.local build --no-cache -t light_lf:BRANCH_NAME .`
+
 Then run your version of dt-core:
 
   * `docker -H BOTNAME.local run -it --name behaviour_benchmarking --rm -v /data:/data --privileged --network=host light_lf:BRANCH_NAME`
@@ -120,9 +126,9 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
   * Then run it by running:
     - `docker -H BOTNAME.local run -it --network host -v /data:/data -v /sys/firmware/devicetree:/devfs:ro hw_check:v1`
 
+
     Then follow the instructions within the terminal.
 
-    TODO: at the moment Hat and Pi not detected! Figure out why.
 
   * When the Docker Container has finished, visit: `http://BOTNAME.local:8082/config` and download the .yaml file with your information in the name.
   * Place the .yaml file within the _data/BenchmarkXY_ folder of your behaviour-benchmarking repository.
@@ -167,13 +173,17 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
 
       * `dts duckiebot keyboard_control BOTNAME`
 
-      To start lane_following press 'a' on your keyboard
+        To start lane_following press 'a' on your keyboard
+
   * Terminal 3: Open a Docker container ros being pre-installed by running the command below **or** record a rosbag directly on your computer if you have the necessary setup installed:
-    - `dts cli`
+
+      - `dts cli`
+
 
     Then within this container record a rosbag that subscribes everything published by the localization system by running:
 
-    - `rosbag record -a --duration=50 -O BAGNAME_localization.bag`
+
+      - `rosbag record -a --duration=50 -O BAGNAME_localization.bag`
 
   * Terminal 4: Run the command already prepared above to record a rosbag that subscribes to the needed topics.
 
@@ -194,12 +204,12 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
 
 ## File gathering:
   After the rosbag recording as well as the Diagnostic Toolbox have finished you can stop the Duckiebot by pressing 's' on your keyboard.
-  Then do the follwing steps:
+  Then do the following steps:
 
   * Exit the container of Terminal 4 by pressing: `crt+d`
   * Ssh into your Duckiebot again by running:
     - `ssh AUTOBOT_NAME`
-  * Within your Duckiebot unmount the folder by running:
+  * Within your Duckiebot, unmount the folder by running:
     - `sudo umount /data/bag`
   * Then remove the USB drive from your Duckiebot and plug it into your local Computer. Copy the `BAGNAME_duckiebot.bag` that should be on your USB drive into the folder `bag` on your local computer.
   * Copy the recorded rosbag of the localization system from the Docker container onto your local computer into the`path_to_bag_folder` (should be simply `bag`) by running:
@@ -209,36 +219,50 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
   * Make sure that both the bags are readable by opening the `bag` folder in a terminal and running:
     - `sudo chmod 777 BAGNAME_localization.bag`
     - `sudo chmod 777 BAGNAME_duckiebot.bag`
-  * To get the information recorded by the diagnostic toolbox, visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menue _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
+  * To get the information recorded by the diagnostic toolbox, visit [dashboard](https://dashboard.duckietown.org/) and login using your Duckietown token. Then navigate to _Diagnostics_ and in the drop down menu _Group_ select _Name_BehBench_LF_ and in the drop down menu _Time_ the corresponding time when you ran the Benchmark. After add the data by pressing onto the green plus and download the _.json_ file by pressing the Download log button.
   * Place the download .json file within you `bag` folder and rename it to `BAGNAME_diagnostics.json`.
 
   * To help the Duckietown community to gather the logs of the recorded bags, please create a folder, named BAGNAME, containing the two bag files as well as the .json file. Make zip of this folder and upload it to the bag folder found under [this link](https://drive.google.com/drive/folders/1pkjvPl8VyOj8K6jeUHXSE0XNPyVqgQDg?usp=sharing).
 
 ## Processing the recorded bags:
   You need to know where your bag is. The folder containing it is referred as `path_to_bag_folder` in the command below. It is recommended to create new separate folders for each Benchmark (with date and/or sequence number). If you followed the instructions above, your bags are located in the folder `bag`. Example for `path_to_bag_folder` is /home/linus/bag.
+
   * Cd into the package `08-post-processing` found in your `behaviour-benchmarking` repository by running:
+
       * `cd behaviour-benchmarking/packages/08-post-processing`
+
   * Then build the repository by running:
+
       * `docker build -t duckietown/post-processing:v1 .`
+
   * Then run the post_processor for the rosbag of the localization system by running:
-    * `docker run --name post_processor -it --rm -e INPUT_BAG_PATH=/data/BAGNAME_localization -e OUTPUT_BAG_PATH=/data/processed_BAGNAME_localization.bag -e ROS_MASTER_URI=http://192.168.1.97:11311 -v path_to_bag_folder:/data duckietown/post-processing:v1`
 
-    This runs a slightly modified version of the original found [here](https://github.com/duckietown/duckietown-cslam/tree/master/08-post-processing).
+      * `docker run --name post_processor -it --rm -e INPUT_BAG_PATH=/data/BAGNAME_localization -e OUTPUT_BAG_PATH=/data/processed_BAGNAME_localization.bag -e ROS_MASTER_URI=http://192.168.1.97:11311 -v path_to_bag_folder:/data duckietown/post-processing:v1`
 
-    (To run the original use the following command:
-    * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAGNAME_localization -e OUTPUT_BAG_PATH=/data/processed_BAGNAME_localization.bag -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`)
-      Note that when running the original post-processor there won't be a file created called `BAGNAME_db_estimation.yaml` which is necessary for the some of the Benchmarks (Ex. Lane Following)
+      This runs a slightly modified version of the original found [here](https://github.com/duckietown/duckietown-cslam/tree/master/08-post-processing).
 
-    When the container stops, you should have a new bag called `processed_BAGNAME_localization.bag` as well as a new .yaml file called `BAGNAME_db_estimation.yaml` inside of your `path_to_bag_folder`. (This can take more than a minute, please be patient)
-    * Make sure that those files are readable by opening the `path_to_bag_folder` in a terminal and running:
-      - `sudo chmod 777 BAGNAME_db_estimation.yaml`
-    * Then place the file called `BAGNAME_db_estimation.yaml` into the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/post_processor`.
+      (To run the original use the following command:
+
+      * `docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/BAGNAME_localization -e OUTPUT_BAG_PATH=/data/processed_BAGNAME_localization.bag -e ROS_MASTER_URI=http://YOUR_IP:11311 -v PATH_TO_BAG_FOLDER:/data duckietown/post-processor:daffy-amd64`)
+        Note that when running the original post-processor there won't be a file created called `BAGNAME_db_estimation.yaml` which is necessary for the some of the Benchmarks (Ex. Lane Following)
+
+      When the container stops, you should have a new bag called `processed_BAGNAME_localization.bag` as well as a new .yaml file called `BAGNAME_db_estimation.yaml` inside of your `path_to_bag_folder`. (This can take more than a minute, please be patient)
+
+      * Make sure that those files are readable by opening the `path_to_bag_folder` in a terminal and running:
+
+         * sudo chmod 777 BAGNAME_db_estimation.yaml
+
+      * Then place the file called `BAGNAME_db_estimation.yaml` into the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/post_processor`.
+
   * Remember from [Unit B-4 - Autolab map](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html), that you created a map. Now is the time to remember on which fork you pushed it (the default is duckietown), and what name you gave to your map (for this Benchmark this should be `linus_loop`). The map file needs to be in the same folder as the rest of the maps. They are respectively the YOUR_FORK_NAME and YOUR_MAP_NAME arguments in the following command line. Please run the graph-optimizer by running:
      * `docker run --rm  -e  ATMSGS_BAG=/data/processed_BAGNAME_localization.bag -e OUTPUT_DIR=/data -e ROS_MASTER=YOUR_HOSTNAME -e ROS_MASTER_IP=YOUR_IP --name graph_optimizer -v path_to_bag_folder:/data -e DUCKIETOWN_WORLD_FORK=YOUR_FORK_NAME -e MAP_NAME=YOUR_MAP_NAME duckietown/cslam-graphoptimizer:daffy-amd64`
 
      This will generate at least one _.yaml_ file that will be stored in the folder `path_to_bag_folder`. If you followed the instructions and placed an April Tag with a different name than you Duckiebot on your localization standoff, you should find two _.yaml_ files. One will be named like your Duckiebot, and the other one like the name of the April Tag on you Duckiebot (Ex. autobot01.yaml). For the benchmarking we are only interested in the .yaml file that has the same name as the April Tag on top of your Duckiebot has.
+
      * Make sure that those files are readable by opening the `path_to_bag_folder` in a terminal and running:
+
          * `sudo chmod 777 APRILTAGID.yaml`
+
      * Then place this file in the folder `~/behaviour-benchmarking/data/BenchmarkXY/yaml/graph_optimizer`
 
   * For the rosbag recorded on the Duckiebot, run analyze-rosbag by:
@@ -247,13 +271,13 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
           * `dts devel build -f --arch amd64`
     * Then run it with:
           * `docker run -v path_to_bag_folder:/data -e DUCKIEBOT=AUTOBOT_NAME -e BAGNAME=BAGNAME_duckiebot -it --rm duckietown/behaviour-benchmarking:v1-amd64`
-    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named: 
-      * `BAGNAME_duckiebot_constant.json`: containing the value of each of the constants that was used for the experiment
-      * `BAGNAME_duckiebot_lane_pose.json`: containing the information about the relative pose estimation of the Duckiebot
-      * `BAGNAME_duckiebot_node_info.json`: containing information about the update frequency of the different nodes, the number of connections etc)
-      * `BAGNAME_duckiebot_segment_count.json`: containing information about the number of segments detected at each time stamp
-      * `BAGNAME_duckiebot_latencies.json`: contains information about the latency measured from the very beginning up to and including the detector node
-      
+    * This will create five `.json`files within the `bag`folder that will be used for the Benchmarking later. The _.json_ files are named:
+        * `BAGNAME_duckiebot_constant.json`: containing the value of each of the constants that was used for the experiment
+        * `BAGNAME_duckiebot_lane_pose.json`: containing the information about the relative pose estimation of the Duckiebot
+        * `BAGNAME_duckiebot_node_info.json`: containing information about the update frequency of the different nodes, the number of connections etc)
+        * `BAGNAME_duckiebot_segment_count.json`: containing information about the number of segments detected at each time stamp
+        * `BAGNAME_duckiebot_latencies.json`: contains information about the latency measured from the very beginning up to and including the detector node
+
     * Make sure that those files are readable by opening the `bag` folder in a terminal and running:
         * `sudo chmod 777 FILENAME.json`
     * Then place all those files in the folder `~/behaviour-benchmarking/data/BenchmarkXY/json`
@@ -264,22 +288,30 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
   * Place the .yaml file created by the graphoptimizer with the name of the April Tag that is on top of your Duckiebot into the _data/BenchmarkXY/yaml/graph_optimizer_ folder (please note that it is important that you take the correct .yaml file as the one named after your actual Duckiebot should **not** be placed within the mentioned folder). Then place the .yaml file created by the post_processor called `BAGNAME_db_estimation.yaml` into the _data/BenchmarkXY/yaml/post_processor_ folder. Also place all the .json files (the one downloaded from the dashboard as well as the 5 created by the analyze_rosbag container) into the  _data/BenchmarkXY/json_ folder of your behaviour_benchmarking repository.
   * Note that XY stands for a number, so for your first Benchmark name the folder _Benchmark01_.
   * Create a virtual environment as you already did for when you added the map to your duckietown-world repository or when you added the exact position of the ground april tags. However, this time, please create this virtual environment within your cloned behaviour_benchmarking repository by following the instructions below:
-    1. First, if not already done, install venv by running:
-       * `sudo apt install -y python3-venv`
-    2. Then, cd into your behaviour_benchmarking repository, and create the venv:
-       * `cd ~/behaviour_benchmarking`
-       * `python3.7 -m venv duckietown-world-venv`
-       * `source duckietown-world-venv/bin/activate`
-    3. Now, you can setup duckietown-world. Inside of the virtual environment (you should see “(duckietown-worl-venv)” in front of your prompt line), please run:
-       * `python3 -m pip install --upgrade pip`
-       * `python3 -m pip install -r requirements.txt`
-       * `python3 -m pip install jupyter`
-       * `python3 setup.py develop --no-deps`
-    4. Then start the notebook:
-       * `jupyter notebook`
+      1. First, if not already done, install venv by running:
 
-    If you encounter any issues with the steps above, please click [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) for more detailed instructions.
-    5. Navigate to the notebooks
+         * `sudo apt install -y python3-venv`
+
+      2. Then, cd into your behaviour_benchmarking repository, and create the venv:
+
+         * `cd ~/behaviour_benchmarking`
+         * `python3.7 -m venv duckietown-world-venv`
+         * `source duckietown-world-venv/bin/activate`
+
+      3. Now, you can setup duckietown-world. Inside of the virtual environment (you should see “(duckietown-worl-venv)” in front of your prompt line), please run:
+
+         * `python3 -m pip install --upgrade pip`
+         * `python3 -m pip install -r requirements.txt`
+         * `python3 -m pip install jupyter`
+         * `python3 setup.py develop --no-deps`
+
+      4. Then start the notebook:
+
+         * `jupyter notebook`
+
+         If you encounter any issues with the steps above, please click [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html) for more detailed instructions.
+
+      5. Navigate to the notebooks
 
 ## Result computation:
 
@@ -295,7 +327,7 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
   This notebook extracts all kind of data measured by the localization system like the actual trajectory, the absolute mean lane offset of the Duckiebot, the number of tiles the Duckiebot covered etc. For more details on what exactly is analyzed and how the analysis is done, please have a look at the Notebook itself. However, below see below for a list of all computed measurements:
       * The mean of the offset (distance and angle) of the Duckiebot in respect to the center of the lane [m]
       * The number of rounds completed (entirely completed by the center of the April Tag placed on the localization standoff on your Duckiebot
-      * The number of tiles covered (center of April Tag coompletely passed the tile)
+      * The number of tiles covered (center of April Tag completely passed the tile)
       * Avg time needed per tile in seconds
       * Length of the Benchmark in seconds
       * Actual length of the benchmark in seconds
@@ -312,27 +344,26 @@ However, it is suggested to develop as you wish and then for the actual Benchmar
       * Mean of the absolute difference between the relative angle measured by the Duckiebot and by the Watchtowers (ground truth) [deg]
       * Std of the absolute difference between the relative angle measured by the Duckiebot and by the Watchtowers (ground truth) [deg]
 
-  
+
 
   * Now it is time to see if you have collected enough data, for this, please open and run the notebook `97-compare_calc_mean_benchmarks`. This will open all your result .yaml files you produced above and check if the data is meaningful. This means that it calculates the standard deviation of some of the measurements over the different experiments and puts it in relation with the mean. If the standard deviation for all of the considered measurements is small enough it will then produce a `BAGNAME_benchmark_final_results.yaml` file which includes the mean values over all the experiments ran and saves it in the folder `~/behaviour-benchmarking/data/BenchmarkXY/benchmarks/final`.
   The Notebook produces some nice visualizations that show the user if its data is stable enough or not and why it is important to have stable data. The user literally gets a green or a red light weather he is ready to actually run the evaluation of the performance or if more data needs to be collected.
   If the standard deviation is too high, please run another experiment, complete the first step of the result computation and run this notebook again.
   If not, please upload the resulting yaml file in the `Results` folder found [here](https://drive.google.com/drive/folders/1pkjvPl8VyOj8K6jeUHXSE0XNPyVqgQDg?usp=sharing)
-
   The .yaml file produced holds the following information:
-       * Software information of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
-       These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. Therefore, this data is called `static`
-       * Engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the total overall performance information (CPU usage, the Memory usage and the NThreads). Moreover it includes total performance information of each node of container dt-core. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
-       * Number of experiments ran
-       * Runtimes of different experiments
-       * Info about if enough data collected
-       * Analysis of all data from Notebook 95 (Mean, Median, Std, CV etc.)
-       * Information about the trajectories
-
+      * Software information of all the containers like: container name, image name and tag, the base image of the container, the architecture of the container, the branch etc. as well as the constants that were  set within the Duckiebot for example the gain, the trim factor etc.
+     These things do not change within the same Benchmark, this means for all the tests you are running with the specific software version all this information remains the same. Therefore, this data is called `static`.
+      * Engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the total overall performance information (CPU usage, the Memory usage and the NThreads). Moreover it includes total performance information of each node of container dt-core. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
+      * Engineering data analysis like the update frequency of the different nodes, the number of segments detected over time, the latency up to and including the `detector_node`, as well as the total overall performance information (CPU usage, the Memory usage and the NThreads). Moreover it includes total performance information of each node of container dt-core. This data changes (at least slightly) between two different tests of the same Benchmark which is why the mean of this data of all the tests ran for one Benchmark is calculated later.
+      * Number of experiments ran
+      * Run-times of different experiments
+      * Info about if enough data collected
+      * Analysis of all data from Notebook 95 (Mean, Median, Std, CV etc.)
+      * Information about the trajectories
 
   * Then you are finally ready to compare your Benchmark with another one of the same type. For this please run the notebook ´ 96-compare_2_benchmarks´. This notebook will guide you through the analysis and show you the comparison of the two Benchmarks you are comparing. In there you find a nice summary of all the measured results, the metric used and the final results.
-  Please hava look at the notebook 96 [example](https://github.com/llingg/behaviour-benchmarking/blob/v1/notebooks/96-compare_2_benchmarks-Example.ipynb) for further details about what the final report includes.
-  
+  Please have a look at the notebook 96 [example](https://github.com/llingg/behaviour-benchmarking/blob/v1/notebooks/96-compare_2_benchmarks-Example.ipynb) for further details about what the final report includes.
+
 
 
 ### Test the code stability

@@ -1,5 +1,0 @@
-<launch>
-  <group ns="$(arg veh)">
-    <node pkg="beh_benchmark" type="beh_benchmark.py" name="benchmark_node" output="screen"/>
-  </group>
-</launch>
